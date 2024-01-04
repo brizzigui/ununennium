@@ -1,0 +1,95 @@
+@font-face {
+    font-family: 'Press Start 2P', system-ui;
+    src: url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+}
+
+
+@font-face {
+    font-family: 'Play', sans-serif;
+    src: url('https://fonts.googleapis.com/css2?family=Play&display=swap');
+}
+
+body {
+    background-color:rgb(26, 66, 66);
+}
+
+h1 {
+    font-family: Helvetica;
+    font-size: 300%;
+    color: whitesmoke;
+}
+
+h3 {
+    font-family: Helvetica;
+    color: gainsboro;
+}
+
+.main_info {
+    width: 50%;
+    margin: auto;
+}
+
+.title {
+    font-family: 'Press Start 2P';
+    text-align: center;
+}
+
+.subtitle {
+    font-family: 'Play';
+    text-align: center;
+}
+
+.game { 
+    width: 50%;
+    margin: auto;
+}
+
+.element {
+    width: 150px;
+    height: 150px;
+    border-radius: 7px;
+    margin: auto;
+    margin-bottom: 75px;
+    background-color: lightskyblue;
+}
+
+.element_letter {
+    padding-top: 45px;
+    font-size: 400%;
+    font-family: 'Helvetica';
+    text-align: center;
+    color: rgb(40, 40, 40);
+}
+
+.answer {
+    width: 50%;
+    padding: 12px 20px;
+    background-color: black;
+    color: white;
+
+    box-sizing: border-box;
+    border: 5px solid darkgray;
+    border-radius: 10px;
+
+    text-align: center;
+    
+    display: block;
+    margin: auto;
+}
+
+.button {
+    width: 20%;
+    padding: 15px 15px;
+    background-color: green;
+    color: white;
+
+    box-sizing: border-box;
+    border: 5px solid lightgreen;
+    border-radius: 5px;
+
+    text-align: center;
+    
+    display: block;
+    margin: auto;
+    margin-top: 15px;
+}

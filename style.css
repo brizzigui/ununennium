@@ -15,7 +15,7 @@
 }
 
 body {
-    background: rgb(26,66,66);
+    background: rgb(40, 40, 40);
 }
 
 h1 {
@@ -111,11 +111,11 @@ input:focus::placeholder {
     color: white;
 
     box-sizing: border-box;
-    border: 3px solid darkgray;
+    border: 3px solid rgb(107, 107, 107);
     border-radius: 10px;
 
     text-align: center;
-    
+
     display: block;
     margin: auto;
 }
@@ -302,6 +302,32 @@ input:focus::placeholder {
 }
 
 #help_menu:after {
+    position: fixed;
+    content: "";
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -2;
+
+    animation: fadeIn 0.5s;
+}
+
+#settings_menu:before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgb(40, 40, 40);
+    z-index: -1;
+
+    animation: fadeIn 0.5s;
+}
+
+#settings_menu:after {
     position: fixed;
     content: "";
     top: 0;

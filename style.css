@@ -177,7 +177,7 @@
 }
 
 body {
-    background: rgb(40, 40, 40);
+    background: rgb(23, 23, 29);
 }
 
 h1 {
@@ -325,7 +325,7 @@ input:focus::placeholder {
 {
     font-family: 'Play';
     font-size:small;
-    background-color: rgb(20, 20, 20);
+    background-color: rgb(15, 15, 15);
     color: darkgray;
 
     position: absolute;

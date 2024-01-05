@@ -71,7 +71,7 @@ async function update()
     expected_answer = expected_answer.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
     let current_answer = document.getElementById("current_answer").value;
-    current_answer = current_answer.toLowerCase();
+    current_answer = current_answer.toLowerCase().replace(" ", "");
     current_answer = current_answer.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
     if(current_answer === expected_answer)

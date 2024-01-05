@@ -62,7 +62,7 @@ const symbols = [
 
 let index = 0;
 let easy_mode = false;
-let random_mode = false;
+let random_mode = true;
 
 async function update()
 {
@@ -76,11 +76,23 @@ async function update()
 
     if(current_answer === expected_answer)
     {
-        do
+        if(random_mode === true)
         {
-            index = Math.floor(Math.random() * 118); // generates random number for next element
+            do
+            {
+                index = Math.floor(Math.random() * 118); // generates random number for next element
+    
+            } while(easy_mode === true && !(index+1 < 56 || index+1 > 71 && index+1 < 87)) // re-shuffles to get easier
+        }
 
-        } while(easy_mode === true && !(index+1 < 56 || index+1 > 71 && index+1 < 87)) // re-shuffles to get easier
+        else
+        {
+            do
+            {
+                index = (index + 1)%119
+            } while(easy_mode === true && !(index+1 < 56 || index+1 > 71 && index+1 < 87))
+        }
+        
 
         document.cookie = "" + index;
 

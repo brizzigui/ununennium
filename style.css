@@ -23,7 +23,7 @@
     }
 
     .game { 
-        width: 300%;
+        width: 100%;
         margin: auto;
         user-select: none;
     }

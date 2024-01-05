@@ -2,10 +2,21 @@
 
 <head>
     <link rel="stylesheet" href="./style.css">
+    <script src="./script.js"></script>
+
 </head>
 
 <body>
-    <div class = main_info>
+    <script>
+        document.body.addEventListener('keydown', function(event) {
+          if (event.keyCode === 13) {
+            update();
+          }
+        });
+
+    </script>
+
+    <div class = "main_info">
 
         <h1 class = "title">
             Ununennium
@@ -18,12 +29,28 @@
 
     <div class = "game">
         <div class="element">
-            <h3 class="element_letter">H</h3>
+            <h3 class="element_letter" id="current_element">H</h3>
+        </div>
+        
+        <input type="text" class="answer" id="current_answer" placeholder="Digite o nome do elemento aqui">
+
+        <button class="button" onclick="update()">Verificar</button>
+
+        <div id="correct" style="display: none;">
+            <h3 class="feedback" style="color:green;">Correto!</h3>
+        </div>
+    
+        <div id="incorrect" class="feedback" style="display: none;">
+            <h3 class="feedback" style="color: red;">Incorreto!</h3>
         </div>
 
-        
-        <input type="text" class="answer">
-
-        <button class="button">Enter</button>
     </div>
+
+    <footer class="footer">
+        <div class="footer_text">
+            <p>Made by <a href="https://github.com/brizzigui">Guilherme Brizzi</a> in 2024</p>
+        </div>
+        
+    </footer>
+
 </body>

@@ -88,3 +88,10 @@ function start()
     let next_symbol = symbols[index];
     document.getElementById("current_element").innerHTML = next_symbol;
 }
+
+function reset()
+{
+    index = 0;
+    let next_symbol = symbols[index];
+    document.getElementById("current_element").innerHTML = next_symbol;
+}

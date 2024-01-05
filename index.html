@@ -3,6 +3,7 @@
 <head>
     <link rel="stylesheet" href="./style.css">
     <script src="./script.js"></script>
+    <meta charset="utf-8">
 
 </head>
 
@@ -27,10 +28,14 @@
         </h3>
     </div>
 
-    <div class = "game">
+    <div class = "game" id="game">
         <div class="element">
             <h3 class="element_letter" id="current_element">H</h3>
         </div>
+
+        <script>
+            start();
+        </script>
         
         <input type="text" class="answer" id="current_answer" placeholder="Digite o nome do elemento aqui">
 
@@ -44,6 +49,12 @@
             <h3 class="feedback" style="color: red;">Incorreto!</h3>
         </div>
 
+    </div>
+
+    <div class = "game_over" id="won" style="display: none;">
+        <h3 class = "game_over_text">Você chegou ao Ununennium (119).</h3>
+        <h3 class = "game_over_text"> Não tem mais para onde ir.</h3>
+        <h2 class = "game_over_text">Parabéns!</h3>
     </div>
 
     <footer class="footer">

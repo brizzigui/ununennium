@@ -129,3 +129,17 @@ a {
     text-align: center;
     
 }
+
+.game_over
+{
+    display: block;
+    margin: auto;
+    margin-top: 10%;
+    text-align: center;
+}
+
+.game_over_text
+{
+    font-family: 'Press Start 2P';
+    color:palegreen;
+}

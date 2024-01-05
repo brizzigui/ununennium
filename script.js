@@ -35,6 +35,7 @@ const answers = [
     "Nihonium", "Flerovium", "Moscovium", "Livermorium", "Tennessine", "Oganesson"
   ];
 
+
 let index = 0;
 
 async function update()
@@ -47,6 +48,15 @@ async function update()
     if(current_answer === expected_answer)
     {
         index += 1;
+        document.cookie = "" + index;
+
+        if(index === 118)
+        {
+            document.getElementById("game").style.display = "none";
+            document.getElementById("won").style.display = "block";
+            index = 0;
+        }
+
         let next_symbol = symbols[index];
         document.getElementById("current_element").innerHTML = next_symbol;
         document.getElementById("current_answer").value = "";
@@ -64,4 +74,17 @@ async function update()
         await new Promise(r => setTimeout(r, 2000));
         document.getElementById("incorrect").style.display = "none";
     }
+}
+
+function start()
+{
+    console.log(document.cookie);
+    index = Number(document.cookie);
+    if(index === "")
+    {
+        index = 0;
+    }
+
+    let next_symbol = symbols[index];
+    document.getElementById("current_element").innerHTML = next_symbol;
 }

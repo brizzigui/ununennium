@@ -162,3 +162,18 @@ a {
     font-family: 'Press Start 2P';
     color:palegreen;
 }
+
+.points
+{
+    white-space: nowrap;
+    
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.points_text
+{
+    font-family: 'Press Start 2P';
+    color:palegreen;
+}

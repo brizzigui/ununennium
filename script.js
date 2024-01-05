@@ -49,6 +49,8 @@ async function update()
     {
         index += 1;
         document.cookie = "" + index;
+        document.getElementById("actual_pts").innerHTML = index;
+
 
         if(index === 118)
         {
@@ -87,11 +89,16 @@ function start()
 
     let next_symbol = symbols[index];
     document.getElementById("current_element").innerHTML = next_symbol;
+    document.getElementById("actual_pts").innerHTML = index;
+
 }
 
 function reset()
 {
     index = 0;
+    document.cookie = "" + index;
     let next_symbol = symbols[index];
     document.getElementById("current_element").innerHTML = next_symbol;
+    document.getElementById("actual_pts").innerHTML = 0;
+
 }

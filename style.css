@@ -9,6 +9,11 @@
     src: url('https://fonts.googleapis.com/css2?family=Play&display=swap');
 }
 
+@font-face {
+    font-family: 'IBM Plex Mono', monospace;
+    src: url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@1,700&display=swap');;
+}
+
 body {
     background: rgb(26,66,66);
 }
@@ -28,17 +33,26 @@ a {
     color:palegreen;
 }
 
+input:focus::placeholder {
+    color: transparent;
+}
+
 .main_info {
     width: 50%;
     margin: auto;
 }
 
 .title {
-    font-family: 'Press Start 2P';
+    font-family: 'IBM Plex Mono', monospace;
     text-align: center;
+    font-size: 500%;
+
+    margin-bottom: 0px;
+    margin-top: 10px;
 }
 
 .subtitle {
+    margin-top: 0px;
     font-family: 'Play';
     text-align: center;
 }
@@ -46,6 +60,7 @@ a {
 .game { 
     width: 50%;
     margin: auto;
+    user-select: none;
 }
 
 .element {
@@ -54,7 +69,15 @@ a {
     border-radius: 7px;
     margin: auto;
     margin-bottom: 75px;
-    background-color: lightskyblue;
+    background-color: rgb(135, 206, 250);
+
+    position: relative;
+
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 .element_letter {
@@ -65,6 +88,17 @@ a {
     color: rgb(40, 40, 40);
 }
 
+.element_number {
+    position: absolute;
+    left: 5%;
+    top: -25%;
+
+    font-size: 200%;
+    font-family: 'Helvetica';
+    text-align: left;
+    color: rgb(40, 40, 40);
+}
+
 .answer {
     width: 50%;
     padding: 12px 20px;
@@ -72,7 +106,7 @@ a {
     color: white;
 
     box-sizing: border-box;
-    border: 5px solid darkgray;
+    border: 3px solid darkgray;
     border-radius: 10px;
 
     text-align: center;
@@ -82,13 +116,15 @@ a {
 }
 
 .button {
+    font-family: "Play", sans-serif;
+
     width: 20%;
-    padding: 15px 15px;
-    background-color: green;
+    padding: 7px 7px;
+    background-color: rgb(40, 165, 40);
     color: white;
 
     box-sizing: border-box;
-    border: 5px solid lightgreen;
+    border: 2px solid rgb(92, 236, 92);
     border-radius: 5px;
 
     text-align: center;
@@ -98,16 +134,23 @@ a {
     margin-top: 15px;
 
     cursor: pointer;
+
+}
+
+.button:hover{
+    background-color: rgb(73, 199, 73);
 }
 
 .reset {
-    width: 10%;
-    padding: 10px 10px;
+    font-family: "Play", sans-serif;
+
+    width: 20%;
+    padding: 7px 7px;
     background-color: darkgoldenrod;
     color: white;
 
     box-sizing: border-box;
-    border: 5px solid orange;
+    border: 2px solid orange;
     border-radius: 5px;
 
     text-align: center;
@@ -119,12 +162,32 @@ a {
     cursor: pointer;
 }
 
+.reset:hover {
+    background-color: rgb(218, 166, 34);
+
+}
+
 .feedback
 {
-    font-family: 'Press Start 2P';
+    font-family: 'Play', sans-serif;
     text-align: center;
     margin: auto;
     margin-top: 15px;
+
+    position: absolute;
+    width: 100%;
+    left: 0%;
+    top: 50%;
+}
+
+.feedback_hide
+{
+    display: none;
+}
+
+.feedback_show
+{
+    display: block;
 }
 
 .footer
@@ -138,7 +201,7 @@ a {
     left: 0px;
     bottom: -0px;
     width: 100%;
-    height: 40px;
+    height: 30px;
 }
 
 .footer_text
@@ -176,4 +239,11 @@ a {
 {
     font-family: 'Press Start 2P';
     color:palegreen;
+}
+
+.help_icon
+{
+    position: fixed;
+    left: 10px;
+    top: 10px;
 }

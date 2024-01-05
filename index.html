@@ -4,7 +4,6 @@
     <link rel="stylesheet" href="./style.css">
     <script src="./script.js"></script>
     <meta charset="utf-8">
-
 </head>
 
 <body>
@@ -24,35 +23,36 @@
         </h1>
 
         <h3 class = subtitle>
-            O jogo que te ensina a tabela periódica
+            Aprenda o nome de todos elementos
         </h3>
     </div>
 
-    <div class = "game" id="game">
-        <div class="element">
-            <h3 class="element_letter" id="current_element">H</h3>
-        </div>
+    <div class="help_icon">
+        <img src="./help_icon.png" style="filter: invert(100%); width: 5%;">
+    </div>
 
-        <div class="points">
-            <h3 class="points_text">Pontos: <strong id="actual_pts">0</strong></h3>
+    <div class = "game" id="game">
+        <div class="element" id="element_box">
+            <h3 class="element_letter" id="current_element">H</h3>
+            <h4 class="element_number" id="element_number">1</h4>
         </div>
 
         <script>
             start();
         </script>
+
+        <div id="correct" class="feedback_hide">
+            <h3 class="feedback" style="color:rgb(0, 205, 0);">Correto!</h3>
+        </div>
+
+        <div id="incorrect" class="feedback_hide">
+            <h3 class="feedback" style="color: rgb(255, 31, 31);">Incorreto!</h3>
+        </div>
         
         <input type="text" class="answer" id="current_answer" placeholder="Digite o nome do elemento aqui">
 
-        <button class="button" onclick="update();">Verificar</button>
-        <button class="reset" onclick="reset();">Resetar</button>
-
-        <div id="correct" style="display: none;">
-            <h3 class="feedback" style="color:green;">Correto!</h3>
-        </div>
-    
-        <div id="incorrect" class="feedback" style="display: none;">
-            <h3 class="feedback" style="color: red;">Incorreto!</h3>
-        </div>
+        <button class="button" onclick="update();"><strong>Verificar</strong></button>
+        <button class="reset" onclick="reset();"><strong>Resetar</strong></button>
 
     </div>
 

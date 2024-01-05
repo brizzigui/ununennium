@@ -1,3 +1,46 @@
+const hydrogen = "rgb(135, 206, 250)";
+const metal = "rgb(171, 86, 245)";
+const alkali = "rgb(255, 99, 99)";
+const terrous_alkali = "rgb(40, 224, 154)";
+const ametal = "rgb(245, 51, 186)"
+const noble_gases = "rgb(245, 51, 186)"
+
+const colors = [
+    hydrogen, noble_gases, alkali, terrous_alkali, metal, ametal, ametal, ametal,
+    ametal, noble_gases, alkali, terrous_alkali, metal, metal, ametal, ametal,
+    ametal, noble_gases, alkali, terrous_alkali, metal, metal, metal, metal,
+    metal, metal, metal, metal, metal, metal, metal, metal, metal,
+    ametal, ametal, noble_gases, alkali, terrous_alkali, metal, metal, metal,
+    metal, metal, metal, metal, metal, metal, metal, metal,
+    metal, metal, metal, ametal, noble_gases, alkali, terrous_alkali, metal,
+    metal, metal, metal, metal, metal, metal, metal, metal,
+    metal, metal, metal, metal, metal, metal, metal, metal,
+    metal, metal, metal, metal, metal, metal, metal, metal,
+    metal, metal, metal, metal, noble_gases, alkali, terrous_alkali, metal,
+    metal, metal, metal, metal, metal, metal, metal, metal,
+    metal, metal, metal, metal, metal, metal, metal, metal,
+    metal, metal, metal, metal, metal, metal, metal, metal,
+    metal, metal, metal, metal, noble_gases
+  ];
+
+const answers = [
+    "Hidrogênio", "Hélio", "Lítio", "Berílio", "Boro", "Carbono", "Nitrogênio", "Oxigênio",
+    "Flúor", "Neônio", "Sódio", "Magnésio", "Alumínio", "Silício", "Fósforo", "Enxofre",
+    "Cloro", "Argônio", "Potássio", "Cálcio", "Escândio", "Titânio", "Vanádio", "Cromo",
+    "Manganês", "Ferro", "Cobalto", "Níquel", "Cobre", "Zinco", "Gálio", " Germânio", "Arsênio",
+    "Selênio", "Bromo", "Criptônio", "Rubídio", "Estrôncio", "Ítrio", "Zircônio", "Nióbio",
+    "Molibdênio", "Tecnécio", "Rutênio", "Ródio", "Paládio", "Prata", "Cádmio", "Índio",
+    "Estanho", "Antimônio", "Telúrio", "Iodo", "Xenônio", "Césio", "Bário", "Lantânio", "Cério",
+    "Praseodímio", "Neodímio", "Promécio", "Samário", "Európio", "Gadolínio", "Térbio", "Disprósio",
+    "Hólmio", "Érbio", "Túlio", "Itérbio", "Lutécio", "Háfnio", "Tântalo", "Tungstênio",
+    "Rênio", "Ósmio", "Irídio", "Platina", "Ouro", "Mercúrio", "Tálio", "Chumbo", "Bismuto",
+    "Polônio", "Ástato", "Radônio", "Frâncio", "Rádio", "Actínio", "Tório", "Protactínio",
+    "Urânio", "Neptúnio", "Plutônio", "Amerício", "Cúrio", "Berquélio", "Califórnio",
+    "Einstênio", "Férmio", "Mendelévio", "Nobélio", "Laurêncio", "Rutherfórdio", "Dúbnio",
+    "Seabórgio", "Bóhrio", "Hássio", "Meitnério", "Darmstádio", "Roentgênio", "Copernício",
+    "Nihônio", "Flérovio", "Moscóvio", "Livermório", "Tenessino", "Ogânio"
+];
+
 const symbols = [
     "H", "He", "Li", "Be", "B", "C", "N", "O",
     "F", "Ne", "Na", "Mg", "Al", "Si", "P", "S",
@@ -14,26 +57,7 @@ const symbols = [
     "Cf", "Es", "Fm", "Md", "No", "Lr", "Rf", "Db",
     "Sg", "Bh", "Hs", "Mt", "Ds", "Rg", "Cn", "Nh",
     "Fl", "Mc", "Lv", "Ts", "Og"
-  ];
-  
-
-const answers = [
-    "Hydrogen", "Helium", "Lithium", "Beryllium", "Boron", "Carbon", "Nitrogen", "Oxygen",
-    "Fluorine", "Neon", "Sodium", "Magnesium", "Aluminum", "Silicon", "Phosphorus", "Sulfur",
-    "Chlorine", "Argon", "Potassium", "Calcium", "Scandium", "Titanium", "Vanadium", "Chromium",
-    "Manganese", "Iron", "Cobalt", "Nickel", "Copper", "Zinc", "Gallium", "Germanium", "Arsenic",
-    "Selenium", "Bromine", "Krypton", "Rubidium", "Strontium", "Yttrium", "Zirconium", "Niobium",
-    "Molybdenum", "Technetium", "Ruthenium", "Rhodium", "Palladium", "Silver", "Cadmium", "Indium",
-    "Tin", "Antimony", "Tellurium", "Iodine", "Xenon", "Cesium", "Barium", "Lanthanum", "Cerium",
-    "Praseodymium", "Neodymium", "Promethium", "Samarium", "Europium", "Gadolinium", "Terbium",
-    "Dysprosium", "Holmium", "Erbium", "Thulium", "Ytterbium", "Lutetium", "Hafnium", "Tantalum",
-    "Tungsten", "Rhenium", "Osmium", "Iridium", "Platinum", "Gold", "Mercury", "Thallium", "Lead",
-    "Bismuth", "Polonium", "Astatine", "Radon", "Francium", "Radium", "Actinium", "Thorium",
-    "Protactinium", "Uranium", "Neptunium", "Plutonium", "Americium", "Curium", "Berkelium", "Californium",
-    "Einsteinium", "Fermium", "Mendelevium", "Nobelium", "Lawrencium", "Rutherfordium", "Dubnium",
-    "Seaborgium", "Bohrium", "Hassium", "Meitnerium", "Darmstadtium", "Roentgenium", "Copernicium",
-    "Nihonium", "Flerovium", "Moscovium", "Livermorium", "Tennessine", "Oganesson"
-  ];
+];
 
 
 let index = 0;
@@ -42,14 +66,16 @@ async function update()
 {
     let expected_answer = answers[index];
     expected_answer = expected_answer.toLowerCase();
+    expected_answer = expected_answer.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
     let current_answer = document.getElementById("current_answer").value;
     current_answer = current_answer.toLowerCase();
+    current_answer = current_answer.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
     if(current_answer === expected_answer)
     {
-        index += 1;
+        index = Math.floor(Math.random() * 118); // generates ramdom number for next element
         document.cookie = "" + index;
-        document.getElementById("actual_pts").innerHTML = index;
 
 
         if(index === 118)
@@ -60,10 +86,16 @@ async function update()
         }
 
         let next_symbol = symbols[index];
-        document.getElementById("current_element").innerHTML = next_symbol;
         document.getElementById("current_answer").value = "";
+        document.getElementById("element_box").style["background-color"] = colors[index];
 
-
+        setTimeout(function() {
+            document.getElementById("current_element").innerHTML = next_symbol;
+            document.getElementById("element_number").innerHTML = index+1;
+        }
+        , 100);
+        
+        
         document.getElementById("correct").style.display = "block";
         await new Promise(r => setTimeout(r, 2000));
         document.getElementById("correct").style.display = "none";
@@ -89,7 +121,8 @@ function start()
 
     let next_symbol = symbols[index];
     document.getElementById("current_element").innerHTML = next_symbol;
-    document.getElementById("actual_pts").innerHTML = index;
+    document.getElementById("element_number").innerHTML = index+1;
+    document.getElementById("element_box").style["background-color"] = colors[index];
 
 }
 
@@ -99,6 +132,6 @@ function reset()
     document.cookie = "" + index;
     let next_symbol = symbols[index];
     document.getElementById("current_element").innerHTML = next_symbol;
-    document.getElementById("actual_pts").innerHTML = 0;
-
+    document.getElementById("element_number").innerHTML = 1;
+    document.getElementById("element_box").style["background-color"] = colors[index];
 }

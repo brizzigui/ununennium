@@ -58,6 +58,25 @@
         top: 10px;
         cursor: pointer;
     }
+
+    .help_menu {
+        display: none;
+        position: fixed;
+        padding: 30px;
+        width: 250px;
+        left: 50%;
+        margin-left: -150px;
+        height: 550px;
+        top: 25%;
+        margin-top: -100px;
+        background: rgb(40, 40, 40);
+        z-index: 20;
+    
+        font-family: "Play", sans-serif;
+        color: lightgray;
+    
+        animation: fadeIn 0.5s;
+    }
   
 }
   
@@ -104,6 +123,25 @@
         right: 10px;
         top: 10px;
         cursor: pointer;
+    }
+
+    .help_menu {
+        display: none;
+        position: fixed;
+        padding: 30px;
+        width: 400px;
+        left: 45%;
+        margin-left: -150px;
+        height: 450px;
+        top: 25%;
+        margin-top: -100px;
+        background: rgb(40, 40, 40);
+        z-index: 20;
+    
+        font-family: "Play", sans-serif;
+        color: lightgray;
+    
+        animation: fadeIn 0.5s;
     }
 }
 
@@ -317,25 +355,6 @@ input:focus::placeholder {
 {
     font-family: 'Press Start 2P';
     color:palegreen;
-}
-
-.help_menu {
-    display: none;
-    position: fixed;
-    padding: 30px;
-    width: 400px;
-    left: 45%;
-    margin-left: -150px;
-    height: 450px;
-    top: 25%;
-    margin-top: -100px;
-    background: rgb(40, 40, 40);
-    z-index: 20;
-
-    font-family: "Play", sans-serif;
-    color: lightgray;
-
-    animation: fadeIn 0.5s;
 }
 
 #help_menu:before {

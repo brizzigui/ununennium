@@ -61,6 +61,8 @@ const symbols = [
 
 
 let index = 0;
+let easy_mode = false;
+let random_mode = false;
 
 async function update()
 {
@@ -74,7 +76,12 @@ async function update()
 
     if(current_answer === expected_answer)
     {
-        index = Math.floor(Math.random() * 118); // generates ramdom number for next element
+        do
+        {
+            index = Math.floor(Math.random() * 118); // generates random number for next element
+
+        } while(easy_mode === true && !(index+1 < 56 || index+1 > 71 && index+1 < 87)) // re-shuffles to get easier
+
         document.cookie = "" + index;
 
 
@@ -134,4 +141,10 @@ function reset()
     document.getElementById("current_element").innerHTML = next_symbol;
     document.getElementById("element_number").innerHTML = 1;
     document.getElementById("element_box").style["background-color"] = colors[index];
+}
+
+function get_value()
+{
+    easy_mode = document.getElementById("easy_mode").checked;
+    random_mode = document.getElementById("random_mode").checked;
 }

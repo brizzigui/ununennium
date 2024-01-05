@@ -33,6 +33,11 @@ a {
     color:palegreen;
 }
 
+img{
+    user-select: none;
+    pointer-events: none;
+}
+
 input:focus::placeholder {
     color: transparent;
 }
@@ -124,7 +129,7 @@ input:focus::placeholder {
     color: white;
 
     box-sizing: border-box;
-    border: 2px solid rgb(92, 236, 92);
+    border: 2px solid rgb(27, 179, 27);
     border-radius: 5px;
 
     text-align: center;
@@ -146,7 +151,7 @@ input:focus::placeholder {
 
     width: 20%;
     padding: 7px 7px;
-    background-color: darkgoldenrod;
+    background-color: rgb(209, 157, 24);
     color: white;
 
     box-sizing: border-box;
@@ -241,9 +246,74 @@ input:focus::placeholder {
     color:palegreen;
 }
 
+
 .help_icon
 {
-    position: fixed;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+
     left: 10px;
     top: 10px;
+    cursor: pointer;
+}
+
+.settings_icon
+{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.help_menu {
+    display: none;
+    position: fixed;
+    padding: 30px;
+    width: 400px;
+    left: 45%;
+    margin-left: -150px;
+    height: 400px;
+    top: 30%;
+    margin-top: -100px;
+    background: rgb(40, 40, 40);
+    z-index: 20;
+
+    font-family: "Play", sans-serif;
+    color: lightgray;
+}
+
+#help_menu:before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgb(40, 40, 40);
+    z-index: -1;
+}
+
+#help_menu:after {
+    position: fixed;
+    content: "";
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -2;
+}
+  
+.x_icon{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
 }

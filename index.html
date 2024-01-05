@@ -27,9 +27,39 @@
         </h3>
     </div>
 
-    <div class="help_icon">
-        <img src="./help_icon.png" style="filter: invert(100%); width: 5%;">
+    <div class="help_icon" onclick="show('help_menu')">
+        <img src="./help_icon.png" style="filter: invert(100%); max-width: 100%; max-height: 100%;">
     </div>
+
+    <div class="settings_icon">
+        <img src="./setting.png" style="filter: invert(100%); max-width: 100%; max-height: 100%;">
+    </div>
+
+    <div class="help_menu" id="help_menu">
+        <h1 style="font-family: 'Play', sans-serif; color: palegreen;">Ajuda</h3>
+        <p>O jogo consiste em digitar o nome dos elementos químicos a partir de seu símbolo e número atômico.</p>
+        <p>Clique na barra e escreva sua resposta. Clique "ENTER" ou no botão para verificar.</p>
+        <p>O próximo elemento será sorteado e aparecerá quando você responder corretamente.</p>
+        <br>
+        <hr>
+        <h3 style="font-family: 'Play', sans-serif; color: palegreen;">Encontrou bugs ou tem sugestões?</h3>
+        <p>Entre em contato comigo em <a href="mailto:brizzigui@gmail.com">brizzigui@gmail.com</a></p>
+        <div class="x_icon" onclick="hide('help_menu')">
+            <img src="./close.png" style="max-width: 100%; max-height: 100%;">
+        </div>
+    </div>
+
+    <script>
+        $ = function(id) {
+            return document.getElementById(id);
+        }
+        var show = function(id) {
+            $(id).style.display ='block';
+        }
+        var hide = function(id) {
+            $(id).style.display ='none';
+        }
+    </script>
 
     <div class = "game" id="game">
         <div class="element" id="element_box">
@@ -56,9 +86,9 @@
 
     </div>
 
-    <div class = "game_over" id="won" style="display: none;">
+    <div class = "game_over" id="won" style="display: none;"> <!-- deprecated feature, to be repurposed -->
         <h3 class = "game_over_text">Você chegou ao Ununennium (119).</h3>
-        <h3 class = "game_over_text"> Não tem mais para onde ir.</h3>
+        <h3 class = "game_over_text">Não tem mais para onde ir.</h3>
         <h2 class = "game_over_text">Parabéns!</h3>
     </div>
 

@@ -23,9 +23,40 @@
     }
 
     .game { 
-        width: 100%;
+        width: 90%;
         margin: auto;
         user-select: none;
+    }
+
+    .title {
+        font-family: 'IBM Plex Mono', monospace;
+        text-align: center;
+        font-size: 400%;
+    
+        margin-bottom: 5px;
+        margin-top: 40px;
+    }
+
+    .help_icon
+    {
+        position: fixed;
+        width: 30px;
+        height: 30px;
+
+        left: 10px;
+        top: 10px;
+        cursor: pointer;
+    }
+
+    .settings_icon
+    {
+        position: fixed;
+        width: 30px;
+        height: 30px;
+        
+        right: 10px;
+        top: 10px;
+        cursor: pointer;
     }
   
 }
@@ -43,7 +74,37 @@
         margin: auto;
         user-select: none;
     }
-  
+    
+    .title {
+        font-family: 'IBM Plex Mono', monospace;
+        text-align: center;
+        font-size: 400%;
+    
+        margin-bottom: 5px;
+        margin-top: 10px;
+    }
+
+    .help_icon
+    {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+
+        left: 10px;
+        top: 10px;
+        cursor: pointer;
+    }
+
+    .settings_icon
+    {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        
+        right: 10px;
+        top: 10px;
+        cursor: pointer;
+    }
 }
 
 body {
@@ -72,15 +133,6 @@ img{
 
 input:focus::placeholder {
     color: transparent;
-}
-
-.title {
-    font-family: 'IBM Plex Mono', monospace;
-    text-align: center;
-    font-size: 400%;
-
-    margin-bottom: 5px;
-    margin-top: 10px;
 }
 
 .subtitle {
@@ -265,29 +317,6 @@ input:focus::placeholder {
 {
     font-family: 'Press Start 2P';
     color:palegreen;
-}
-
-
-.help_icon
-{
-    position: absolute;
-    width: 30px;
-    height: 30px;
-
-    left: 10px;
-    top: 10px;
-    cursor: pointer;
-}
-
-.settings_icon
-{
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    
-    right: 10px;
-    top: 10px;
-    cursor: pointer;
 }
 
 .help_menu {

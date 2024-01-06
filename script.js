@@ -3,7 +3,7 @@ const metal = "rgb(171, 86, 245)";
 const alkali = "rgb(255, 99, 99)";
 const terrous_alkali = "rgb(40, 224, 154)";
 const ametal = "rgb(245, 51, 186)"
-const noble_gases = "rgb(245, 51, 186)"
+const noble_gases = "rgb(237, 199, 43)"
 
 const colors = [
     hydrogen, noble_gases, alkali, terrous_alkali, metal, ametal, ametal, ametal,
@@ -71,7 +71,7 @@ async function update()
     expected_answer = expected_answer.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
     let current_answer = document.getElementById("current_answer").value;
-    current_answer = current_answer.toLowerCase().replace(" ", "");
+    current_answer = current_answer.toLowerCase().replace(/[" "]/g, "");
     current_answer = current_answer.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
     if(current_answer === expected_answer)

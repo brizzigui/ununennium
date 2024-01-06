@@ -141,8 +141,9 @@ async function update()
 
 function start()
 {
+    // restaura elemento
     let starting_cookie = retrive_cookie_by_name("index");
-    
+
     if(starting_cookie === "")
     {
         index = 0;
@@ -159,6 +160,12 @@ function start()
     document.getElementById("element_number").innerHTML = index+1;
     document.getElementById("element_box").style["background-color"] = colors[index];
 
+    // restaura configurações
+    easy_mode = retrive_cookie_by_name("easy_mode") === "true" ? true : false;
+    random_mode = retrive_cookie_by_name("random_mode") === "true" ? true : false;
+
+    document.getElementById("easy_mode").checked = easy_mode;
+    document.getElementById("random_mode").checked = random_mode;
 }
 
 function reset()
@@ -175,6 +182,9 @@ function get_value()
 {
     easy_mode = document.getElementById("easy_mode").checked;
     random_mode = document.getElementById("random_mode").checked;
+
+    set_cookie("easy_mode", easy_mode);
+    set_cookie("random_mode", random_mode);
 }
 
 function reveal()

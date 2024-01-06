@@ -96,8 +96,7 @@ async function update()
         }
         
 
-        document.cookie = "" + index;
-
+        set_cookie("index", index);
 
         if(index === 118)
         {
@@ -142,8 +141,7 @@ async function update()
 
 function start()
 {
-    console.log(document.cookie);
-    index = Number(document.cookie);
+    index = parseInt(retrive_cookie_by_name("index"));
     if(index === "")
     {
         index = 0;
@@ -159,7 +157,7 @@ function start()
 function reset()
 {
     index = 0;
-    document.cookie = "" + index;
+    set_cookie("index", index);
     let next_symbol = symbols[index];
     document.getElementById("current_element").innerHTML = next_symbol;
     document.getElementById("element_number").innerHTML = 1;
@@ -176,4 +174,28 @@ function reveal()
 {
     document.getElementById("current_answer").value = answers[index];
     revealed = true;
+}
+
+function set_cookie(name, value) {
+    const date = new Date();
+    date.setTime(date.getTime() + (365*24*60*60*1000)); //expires in a year
+    let expires = "expires="+ date.toUTCString();
+    document.cookie = name + "=" + value + ";" + expires + ";path=/";
+}
+
+function retrive_cookie_by_name(requested_name)
+{
+    let string = document.cookie;
+    all_cookies = string.replace(/[" "]/g, "").split(";");
+
+    for(let i = 0; i < all_cookies.length; i++)
+    {
+        let name_value_pair = (all_cookies[i].split("="));
+        if(name_value_pair[0] === requested_name)
+        {
+            return name_value_pair[1];
+        }
+    }
+
+    return "";
 }

@@ -63,6 +63,7 @@ const symbols = [
 let index = 0;
 let easy_mode = false;
 let random_mode = true;
+let revealed = false;
 
 async function update()
 {
@@ -76,6 +77,7 @@ async function update()
 
     if(current_answer === expected_answer)
     {
+
         if(random_mode === true)
         {
             do
@@ -113,12 +115,21 @@ async function update()
             document.getElementById("element_number").innerHTML = index+1;
         }
         , 100);
+
+        if(revealed) // if user revealed the answer
+        {
+            revealed = false;
+            document.getElementById("revealed").style.display = "block";
+            await new Promise(r => setTimeout(r, 2000));
+            document.getElementById("revealed").style.display = "none";
+        }
         
-        
-        document.getElementById("correct").style.display = "block";
-        await new Promise(r => setTimeout(r, 2000));
-        document.getElementById("correct").style.display = "none";
-    
+        else // if user got it right fair and square
+        {
+            document.getElementById("correct").style.display = "block";
+            await new Promise(r => setTimeout(r, 2000));
+            document.getElementById("correct").style.display = "none";
+        }
     }
 
     else
@@ -159,4 +170,10 @@ function get_value()
 {
     easy_mode = document.getElementById("easy_mode").checked;
     random_mode = document.getElementById("random_mode").checked;
+}
+
+function reveal()
+{
+    document.getElementById("current_answer").value = answers[index];
+    revealed = true;
 }

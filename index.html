@@ -45,6 +45,10 @@
         <div title="Estatística" class="stats_icon" onclick="show('stats_menu')">
             <img src="./assets/chart.png" style="filter: invert(100%); max-width: 100%; max-height: 100%;">
         </div>
+
+        <div title="Resetar" class="reset_icon" onclick="reset()">
+            <img src="./assets/undo-arrow.png" style="filter: invert(100%); max-width: 100%; max-height: 100%;">
+        </div>
     </div>
 
     <div class="help_menu" id="help_menu">
@@ -129,11 +133,15 @@
         <div id="incorrect" class="feedback_hide">
             <h3 class="feedback" style="color: rgb(255, 31, 31);">Incorreto!</h3>
         </div>
+
+        <div id="revealed" class="feedback_hide">
+            <h3 class="feedback" style="color: rgb(255, 180, 31);">Revelada!</h3>
+        </div>
         
         <input type="text" class="answer" id="current_answer" placeholder="Digite o nome do elemento aqui" style="font-family: 'Play', sans-serif;">
 
         <button class="button" onclick="update();"><strong>Verificar</strong></button>
-        <button class="reset" onclick="reset();"><strong>Resetar</strong></button>
+        <button class="reset" onclick="reveal();"><strong>Revelar</strong></button>
 
     </div>
 

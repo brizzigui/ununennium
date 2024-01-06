@@ -77,6 +77,17 @@
         cursor: pointer;
     }
 
+    .reset_icon
+    {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        
+        right: 10px;
+        top: 140px;
+        cursor: pointer;
+    }
+
     .help_menu {
         display: none;
         position: fixed;
@@ -174,6 +185,17 @@
         
         right: 0px;
         top: 90px;
+        cursor: pointer;
+    }
+    
+    .reset_icon
+    {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        
+        right: 0px;
+        top: 140px;
         cursor: pointer;
     }
 

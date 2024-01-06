@@ -34,15 +34,15 @@
     </div>
 
     <div class="icons_container">
-        <div class="help_icon" onclick="show('help_menu')">
+        <div title="Ajuda" class="help_icon" onclick="show('help_menu')">
             <img src="./assets/help_icon.png" style="filter: invert(100%); max-width: 100%; max-height: 100%;">
         </div>
 
-        <div class="settings_icon" onclick="show('settings_menu')">
+        <div title="Ajustes" class="settings_icon" onclick="show('settings_menu')">
             <img src="./assets/setting.png" style="filter: invert(100%); max-width: 100%; max-height: 100%;">
         </div>
 
-        <div class="stats_icon" onclick="show('stats_menu')">
+        <div title="Estatística" class="stats_icon" onclick="show('stats_menu')">
             <img src="./assets/chart.png" style="filter: invert(100%); max-width: 100%; max-height: 100%;">
         </div>
     </div>
@@ -72,13 +72,15 @@
     <div class="help_menu" id="settings_menu">
         <h1 style="font-family: 'Play', sans-serif; color: palegreen;">Ajustes</h3>
 
-        <h3 style="font-family: 'Play', sans-serif; color: palegreen;">Modo fácil (elementos mais conhecidos):</h3>
+        <h3 style="font-family: 'Play', sans-serif; color: palegreen; margin-bottom: 5px;">Modo fácil</h3>
+        <p style="font-size: smaller; color: darkgray; margin-top: 0px;">Elementos mais conhecidos</p>
         <label class="switch">
             <input type="checkbox" id="easy_mode" onclick="get_value()">
             <span class="slider round"></span>
           </label>
 
-        <h3 style="font-family: 'Play', sans-serif; color: palegreen;">Modo aleatório (ordem sorteada):</h3>
+        <h3 style="font-family: 'Play', sans-serif; color: palegreen; margin-bottom: 5px;">Modo aleatório</h3>
+        <p style="font-size: smaller; color: darkgray; margin-top: 0px;">Ordem sorteada</p>
         <label class="switch">
             <input type="checkbox" checked id="random_mode" onclick="get_value()">
             <span class="slider round"></span>

@@ -38,7 +38,7 @@ const answers = [
     "Urânio", "Neptúnio", "Plutônio", "Amerício", "Cúrio", "Berquélio", "Califórnio",
     "Einstênio", "Férmio", "Mendelévio", "Nobélio", "Laurêncio", "Rutherfórdio", "Dúbnio",
     "Seabórgio", "Bóhrio", "Hássio", "Meitnério", "Darmstádio", "Roentgênio", "Copernício",
-    "Nihônio", "Flérovio", "Moscóvio", "Livermório", "Tenessino", "Oganessônio"
+    "Nihônio", "Flérovio", "Moscóvio", "Livermório", "Tenesso", "Oganessônio"
 ];
 
 const symbols = [

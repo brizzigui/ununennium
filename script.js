@@ -141,11 +141,18 @@ async function update()
 
 function start()
 {
-    index = parseInt(retrive_cookie_by_name("index"));
-    if(index === "")
+    let starting_cookie = retrive_cookie_by_name("index");
+    
+    if(starting_cookie === "")
     {
         index = 0;
     }
+
+    else
+    {
+        index = parseInt(starting_cookie);
+    }
+
 
     let next_symbol = symbols[index];
     document.getElementById("current_element").innerHTML = next_symbol;

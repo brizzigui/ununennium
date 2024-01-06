@@ -59,6 +59,9 @@ const symbols = [
     "Fl", "Mc", "Lv", "Ts", "Og"
 ];
 
+let explored = [];
+let n_tries = 0;
+let accepted = 0;
 
 let index = 0;
 let easy_mode = false;
@@ -67,6 +70,8 @@ let revealed = false;
 
 async function update()
 {
+    n_tries++;
+
     let expected_answer = answers[index];
     expected_answer = expected_answer.toLowerCase();
     expected_answer = expected_answer.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
@@ -77,6 +82,19 @@ async function update()
 
     if(current_answer === expected_answer)
     {
+        if (!revealed) 
+        {
+            accepted++;
+
+            let current_symbol = symbols[index];
+            if(explored.includes(current_symbol) === false)
+            {
+                explored.push(current_symbol);
+            }
+        }
+
+        update_stats_cookie();
+        update_stats_display();
 
         if(random_mode === true)
         {
@@ -133,6 +151,9 @@ async function update()
 
     else
     {
+        update_stats_cookie();
+        update_stats_display();
+
         document.getElementById("incorrect").style.display = "block";
         await new Promise(r => setTimeout(r, 2000));
         document.getElementById("incorrect").style.display = "none";
@@ -166,11 +187,16 @@ function start()
 
     document.getElementById("easy_mode").checked = easy_mode;
     document.getElementById("random_mode").checked = random_mode;
+
+    // cria estatísticas
+    create_stats();
+    update_stats_display();
 }
 
 function reset()
 {
     index = 0;
+    revealed = false;
     set_cookie("index", index);
     let next_symbol = symbols[index];
     document.getElementById("current_element").innerHTML = next_symbol;
@@ -215,4 +241,51 @@ function retrive_cookie_by_name(requested_name)
     }
 
     return "";
+}
+
+function check_if_stats_exist()
+{
+    if (retrive_cookie_by_name("stats") === "")
+    {
+        return false;
+    }
+
+    return true;
+}
+
+function create_stats()
+{
+    if(check_if_stats_exist())
+    {
+        let cookie = retrive_cookie_by_name("stats");
+        cookie = cookie.split("/");
+
+        n_tries = parseInt(cookie[0]);
+        accepted = parseInt(cookie[1]);
+        
+        cookie[2] = cookie[2].split(",");
+
+        for (let i = 0; i < cookie[2].length; i++) {
+            let element = cookie[2][i];
+            explored.push(element);
+        }
+    }
+
+    else
+    {
+        update_stats_cookie();
+    }
+}
+
+function update_stats_cookie()
+{
+    set_cookie("stats", "" + n_tries + "/" + accepted + "/" + explored)
+}
+
+function update_stats_display()
+{
+    document.getElementById("number_explored").innerHTML = explored.length;
+    document.getElementById("number_attempts").innerHTML = n_tries;
+    document.getElementById("correctly_answered").innerHTML = accepted;
+
 }

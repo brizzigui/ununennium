@@ -586,3 +586,18 @@ input:focus::placeholder {
   .slider.round:before {
     border-radius: 50%;
   }
+
+.stat_label
+{
+    font-family: "Play", sans-serif;
+    font-size: medium;
+    color: lightgray;
+    margin-top: 0px;
+}
+
+.stat_value
+{
+    font-family: "IBM Plex Mono", monospace;
+    margin-bottom: 0px;
+    color: palegreen;
+}

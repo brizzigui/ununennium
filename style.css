@@ -1,4 +1,4 @@
-@media (min-width: 320px) and (max-width: 999px) {
+@media (min-width: 0px) and (max-width: 999px) {
 
     .main_info {
         position: relative;
@@ -68,7 +68,7 @@
         height: 30px;
         
         right: 10px;
-        top: 140px;
+        top: 130px;
         cursor: pointer;
     }
 
@@ -179,7 +179,7 @@
         height: 30px;
         
         right: 0px;
-        top: 140px;
+        top: 130px;
         cursor: pointer;
     }
 
@@ -361,15 +361,19 @@ input:focus::placeholder {
 {
     position: relative;
     margin: auto;
-    display: none;
+    display: block;
+    opacity: 0;
+    
+    animation: none;
 }
 
-.feedback_show
+@keyframes feedback_animation_in
 {
-    position: relative;
-    margin: auto;
-    display: inline-block;
+    0%   {opacity: 1;}
+    50%  {opacity: 1;}
+    100% {opacity: 0;}
 }
+
 
 .footer
 {

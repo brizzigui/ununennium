@@ -136,16 +136,12 @@ async function update()
         if(revealed) // if user revealed the answer
         {
             revealed = false;
-            document.getElementById("revealed").style.display = "block";
-            await new Promise(r => setTimeout(r, 2000));
-            document.getElementById("revealed").style.display = "none";
+            handle_feedback_animation("revealed");
         }
         
         else // if user got it right fair and square
         {
-            document.getElementById("correct").style.display = "block";
-            await new Promise(r => setTimeout(r, 2000));
-            document.getElementById("correct").style.display = "none";
+            handle_feedback_animation("correct");
         }
     }
 
@@ -154,9 +150,7 @@ async function update()
         update_stats_cookie();
         update_stats_display();
 
-        document.getElementById("incorrect").style.display = "block";
-        await new Promise(r => setTimeout(r, 2000));
-        document.getElementById("incorrect").style.display = "none";
+        handle_feedback_animation("incorrect");
     }
 }
 
@@ -303,4 +297,48 @@ function reset_stats()
 
     update_stats_cookie();
     update_stats_display();
+}
+
+
+async function handle_feedback_animation(feedback_id)
+{
+    if (feedback_id != "revealed") 
+    {   
+        document.getElementById("revealed").style.opacity = "0";
+        document.getElementById("revealed").style.animation = "none";
+    }
+
+    if (feedback_id != "correct") 
+    {   
+        document.getElementById("correct").style.opacity = "0";
+        document.getElementById("correct").style.animation = "none";
+    }
+
+    if (feedback_id != "incorrect") 
+    {   
+        document.getElementById("incorrect").style.opacity = "0";
+        document.getElementById("incorrect").style.animation = "none";
+    }
+
+    while (document.getElementById(feedback_id).style.animation == "2s ease 0s 1 normal none running feedback_animation_in") 
+    {
+        document.getElementById(feedback_id).style.opacity = 1;
+        document.getElementById(feedback_id).style.animation = "none";
+        await new Promise(r => setTimeout(r, 1000));
+        document.getElementById(feedback_id).style.animation = "feedback_animation_in 1s";
+        document.getElementById(feedback_id).style.opacity = 0;
+    }
+
+    if (!(document.getElementById(feedback_id).style.animation == "2s ease 0s 1 normal none running feedback_animation_in"))
+    {
+        document.getElementById(feedback_id).style.animation = "feedback_animation_in 2s";
+
+        let original_index = index;
+        await new Promise(r => setTimeout(r, 2000));
+
+        if(original_index === index)
+        {
+            document.getElementById(feedback_id).style.animation = "none";
+        }
+    }
 }

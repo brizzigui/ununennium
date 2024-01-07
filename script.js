@@ -336,7 +336,7 @@ async function handle_feedback_animation(feedback_id)
         let original_index = index;
         await new Promise(r => setTimeout(r, 2000));
 
-        if(original_index === index)
+        if(original_index === index && feedback_id != "incorrect")
         {
             document.getElementById(feedback_id).style.animation = "none";
         }

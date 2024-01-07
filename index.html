@@ -104,6 +104,9 @@
     <div class="help_menu" id="stats_menu">
         <h1 style="font-family: 'Play', sans-serif; color: palegreen;">Estatística</h1>
         <hr style="margin-top: -10px; margin-bottom: -10px;">
+        <div class="reset_stats" onclick="reset_stats();" title="Zerar estatísticas">
+            <img src="./assets/undo-arrow.png" style="max-width: 100%; max-height: 100%;">
+        </div>
         <h1 class="stat_value">
             <span id="number_explored" class="stat_value">X</span><span class="stat_label"> / 118</span>
         </h1>
@@ -162,7 +165,7 @@
         <input type="text" class="answer" id="current_answer" placeholder="Digite o nome do elemento aqui" style="font-family: 'Play', sans-serif;">
 
         <button class="button" onclick="update();"><strong>Verificar</strong></button>
-        <button class="reset" onclick="reveal();"><strong>Revelar</strong></button>
+        <button class="reveal" onclick="reveal();"><strong>Revelar</strong></button>
 
     </div>
 

@@ -316,7 +316,7 @@ input:focus::placeholder {
     background-color: rgb(73, 199, 73);
 }
 
-.reset {
+.reveal {
     font-family: "Play", sans-serif;
 
     width: 20%;
@@ -337,7 +337,7 @@ input:focus::placeholder {
     cursor: pointer;
 }
 
-.reset:hover {
+.reveal:hover {
     background-color: rgb(218, 166, 34);
 
 }
@@ -590,4 +590,17 @@ input:focus::placeholder {
     font-family: "IBM Plex Mono", monospace;
     margin-bottom: 0px;
     color: palegreen;
+}
+
+.reset_stats
+{
+    position: absolute;
+    right: 35px;
+    bottom: 35px;
+
+    filter: invert(100%);
+    width: 30px;
+    height: 30px;
+
+    cursor: pointer;
 }

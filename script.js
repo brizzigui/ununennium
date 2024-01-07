@@ -289,3 +289,14 @@ function update_stats_display()
     document.getElementById("correctly_answered").innerHTML = accepted;
 
 }
+
+function reset_stats()
+{
+    n_tries = 0;
+    accepted = 0;
+    explored = [];
+    explored.pop();
+
+    update_stats_cookie();
+    update_stats_display();
+}

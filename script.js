@@ -320,16 +320,17 @@ async function handle_feedback_animation(feedback_id)
         document.getElementById("incorrect").style.animation = "none";
     }
 
-    while (document.getElementById(feedback_id).style.animation == "2s ease 0s 1 normal none running feedback_animation_in") 
+    if (document.getElementById(feedback_id).style.animation == "2s ease 0s 1 normal none running feedback_animation_in") 
     {
         document.getElementById(feedback_id).style.opacity = 1;
         document.getElementById(feedback_id).style.animation = "none";
-        await new Promise(r => setTimeout(r, 1000));
-        document.getElementById(feedback_id).style.animation = "feedback_animation_in 1s";
+        await new Promise(r => setTimeout(r, 1));
+
+        document.getElementById(feedback_id).style.animation = "feedback_animation_in 2s";
         document.getElementById(feedback_id).style.opacity = 0;
     }
 
-    if (!(document.getElementById(feedback_id).style.animation == "2s ease 0s 1 normal none running feedback_animation_in"))
+    else
     {
         document.getElementById(feedback_id).style.animation = "feedback_animation_in 2s";
 

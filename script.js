@@ -267,7 +267,11 @@ function create_stats()
 
         for (let i = 0; i < cookie[2].length; i++) {
             let element = cookie[2][i];
-            explored.push(element);
+            
+            if (element != "")
+            {
+                explored.push(element);
+            }
         }
     }
 
@@ -295,7 +299,7 @@ function reset_stats()
     n_tries = 0;
     accepted = 0;
     explored = [];
-    explored.pop();
+    console.log(explored);
 
     update_stats_cookie();
     update_stats_display();

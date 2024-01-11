@@ -1,4 +1,4 @@
-@media (min-width: 0px) and (max-width: 999px) {
+@media (min-width: 0px) and (max-width: 999.9px) {
 
     .main_info {
         position: relative;
@@ -450,7 +450,7 @@ input:focus::placeholder {
     color:palegreen;
 }
 
-#help_menu:before {
+.menus:before {
     position: absolute;
     content: "";
     top: 0;
@@ -463,59 +463,7 @@ input:focus::placeholder {
     animation: fadeIn 0.5s;
 }
 
-#help_menu:after {
-    position: fixed;
-    content: "";
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: -2;
-
-    animation: fadeIn 0.5s;
-}
-
-#settings_menu:before {
-    position: absolute;
-    content: "";
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: rgb(40, 40, 40);
-    z-index: -1;
-
-    animation: fadeIn 0.5s;
-}
-
-#settings_menu:after {
-    position: fixed;
-    content: "";
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: -2;
-
-    animation: fadeIn 0.5s;
-}
-
-#stats_menu:before {
-    position: absolute;
-    content: "";
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: rgb(40, 40, 40);
-    z-index: -1;
-
-    animation: fadeIn 0.5s;
-}
-
-#stats_menu:after {
+.menus:after {
     position: fixed;
     content: "";
     top: 0;
@@ -646,7 +594,7 @@ input:focus::placeholder {
     border: 3px solid palegreen;
     border-radius: 5px;
 
-    margin-top: 15%;
+    margin-top: 10%;
 
     background-color: black;
 }

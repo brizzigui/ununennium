@@ -24,6 +24,16 @@
           }
         });
 
+        document.body.addEventListener('click', function(event) {
+            if(event.target.id == "background_dim")
+            {
+                hide('help_menu');
+                hide('settings_menu');
+                hide('stats_menu');
+                hide('tips_menu');
+            }
+        });
+
     </script>
 
     <div class = "main_info">
@@ -60,6 +70,8 @@
             <img src="./assets/idea.png" style="filter: invert(100%); max-width: 100%; max-height: 100%;">
         </div>
     </div>
+
+    <div id="background_dim" class="background_dim"></div>
 
     <div class="menus" id="help_menu">
         <h1 style="font-family: 'Play', sans-serif; color: palegreen;">Ajuda</h3>
@@ -149,9 +161,11 @@
         }
         var show = function(id) {
             $(id).style.display ='block';
+            document.getElementById("background_dim").style.display = 'block';
         }
         var hide = function(id) {
             $(id).style.display ='none';
+            document.getElementById("background_dim").style.display = 'none';
         }
     </script>
 

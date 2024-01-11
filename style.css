@@ -25,7 +25,6 @@
     {
         position: relative;
         width: 100%;
-        z-index: 10;
     }
 
     .help_icon
@@ -94,7 +93,7 @@
         top: 20%;
         margin-top: -100px;
         background: rgb(40, 40, 40);
-        z-index: 20;
+        z-index: 2;
     
         font-family: "Play", sans-serif;
         color: lightgray;
@@ -147,7 +146,6 @@
         position: relative;
         margin: auto;
         width: 70%;
-        z-index: 10;
     }
 
     .help_icon
@@ -450,20 +448,15 @@ input:focus::placeholder {
     color:palegreen;
 }
 
-.menus:before {
+.menus {
     position: absolute;
-    content: "";
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
     background: rgb(40, 40, 40);
-    z-index: -1;
+    z-index: 2;
 
     animation: fadeIn 0.5s;
 }
 
-.menus:after {
+.background_dim {
     position: fixed;
     content: "";
     top: 0;
@@ -471,7 +464,9 @@ input:focus::placeholder {
     bottom: 0;
     right: 0;
     background: rgba(0, 0, 0, 0.5);
-    z-index: -2;
+    z-index: 1;
+
+    display: none;
 
     animation: fadeIn 0.5s;
 }

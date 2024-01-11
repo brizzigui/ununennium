@@ -55,9 +55,13 @@
         <div title="Resetar" class="reset_icon" onclick="reset()">
             <img src="./assets/undo-arrow.png" style="filter: invert(100%); max-width: 100%; max-height: 100%;">
         </div>
+
+        <div title="Dica" class="tip_icon" onclick="show('tips_menu')">
+            <img src="./assets/idea.png" style="filter: invert(100%); max-width: 100%; max-height: 100%;">
+        </div>
     </div>
 
-    <div class="help_menu" id="help_menu">
+    <div class="menus" id="help_menu">
         <h1 style="font-family: 'Play', sans-serif; color: palegreen;">Ajuda</h3>
         <p>O jogo consiste em digitar o nome dos elementos químicos a partir de seu símbolo e número atômico.</p>
 
@@ -79,7 +83,7 @@
         </div>
     </div>
 
-    <div class="help_menu" id="settings_menu">
+    <div class="menus" id="settings_menu">
         <h1 style="font-family: 'Play', sans-serif; color: palegreen;">Ajustes</h3>
 
         <h3 style="font-family: 'Play', sans-serif; color: palegreen; margin-bottom: 5px;">Modo fácil</h3>
@@ -101,7 +105,7 @@
         </div>
     </div>
 
-    <div class="help_menu" id="stats_menu">
+    <div class="menus" id="stats_menu">
         <h1 style="font-family: 'Play', sans-serif; color: palegreen;">Estatística</h1>
         <hr style="margin-top: -10px; margin-bottom: -10px;">
         <div class="reset_stats" onclick="reset_stats();" title="Zerar estatísticas">
@@ -123,6 +127,19 @@
         <h3 class="stat_label">Respostas corretas</h3>
 
         <div class="x_icon" onclick="hide('stats_menu')">
+            <img src="./assets/close.png" style="max-width: 100%; max-height: 100%;">
+        </div>
+    </div>
+
+    <div class="menus" id="tips_menu">
+        <h1 style="font-family: 'Play', sans-serif; color: palegreen;">Dica</h1>
+        <hr style="margin-top: -10px;">
+        
+        <h3 class="tip_text" id="tip_text">
+            Tip text sits here.
+        </h3>
+
+        <div class="x_icon" onclick="hide('tips_menu')">
             <img src="./assets/close.png" style="max-width: 100%; max-height: 100%;">
         </div>
     </div>

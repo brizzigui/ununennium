@@ -72,7 +72,18 @@
         cursor: pointer;
     }
 
-    .help_menu {
+    .tip_icon
+    {
+        position: absolute;
+        width: 35px;
+        height: 35px;
+        
+        right: 7.5px;
+        top: 170px;
+        cursor: pointer;
+    }
+
+    .menus {
         display: none;
         position: fixed;
         padding: 30px;
@@ -145,7 +156,7 @@
         width: 30px;
         height: 30px;
 
-        right: 0px;
+        right: 160px;
         top: 10px;
         cursor: pointer;
     }
@@ -156,8 +167,8 @@
         width: 30px;
         height: 30px;
         
-        right: 0px;
-        top: 50px;
+        right: 120px;
+        top: 10px;
         cursor: pointer;
     }
 
@@ -167,8 +178,8 @@
         width: 30px;
         height: 30px;
         
-        right: 0px;
-        top: 90px;
+        right: 80px;
+        top: 10px;
         cursor: pointer;
     }
     
@@ -178,12 +189,23 @@
         width: 30px;
         height: 30px;
         
-        right: 0px;
-        top: 130px;
+        right: 40px;
+        top: 10px;
         cursor: pointer;
     }
 
-    .help_menu {
+    .tip_icon
+    {
+        position: absolute;
+        width: 35px;
+        height: 35px;
+        
+        right: -2.5px;
+        top: 6px;
+        cursor: pointer;
+    }
+
+    .menus {
         display: none;
         position: fixed;
         padding: 30px;
@@ -607,4 +629,24 @@ input:focus::placeholder {
     height: 30px;
 
     cursor: pointer;
+}
+
+.tip_text
+{
+    font-family: "Play", sans-serif;
+    font-size: large;
+    color: lightgray;
+
+    width: 75%;
+    
+    margin: auto;
+    text-align: center;
+
+    padding: 10px;
+    border: 3px solid palegreen;
+    border-radius: 5px;
+
+    margin-top: 15%;
+
+    background-color: black;
 }

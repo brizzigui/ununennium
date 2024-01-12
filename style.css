@@ -134,6 +134,26 @@
     .under_text {
         margin-top: 67.5%;
     }
+
+    .button {
+        font-family: "Play", sans-serif;
+    
+        width: 35%;
+        padding: 7px 7px;
+        color: white;
+    
+        box-sizing: border-box;
+        border-radius: 5px;
+    
+        text-align: center;
+        
+        display: block;
+        margin: auto;
+        margin-top: 15px;
+    
+        cursor: pointer;
+    
+    }
 }
   
 @media (min-width: 1000px) {
@@ -273,6 +293,26 @@
         margin-top: 10%;
         margin-bottom: 20%;
     }
+
+    .button {
+        font-family: "Play", sans-serif;
+    
+        width: 20%;
+        padding: 7px 7px;
+        color: white;
+    
+        box-sizing: border-box;
+        border-radius: 5px;
+    
+        text-align: center;
+        
+        display: block;
+        margin: auto;
+        margin-top: 15px;
+    
+        cursor: pointer;
+    
+    }
 }
 
 body {
@@ -346,56 +386,28 @@ input:focus::placeholder {
     color: rgb(40, 40, 40);
 }
 
-.button {
-    font-family: "Play", sans-serif;
-
-    width: 20%;
-    padding: 7px 7px;
+.button.verify
+{
     background-color: rgb(40, 165, 40);
-    color: white;
-
-    box-sizing: border-box;
     border: 2px solid rgb(27, 179, 27);
-    border-radius: 5px;
-
-    text-align: center;
-    
-    display: block;
-    margin: auto;
-    margin-top: 15px;
-
-    cursor: pointer;
-
 }
 
-.button:hover{
+.button.verify:hover
+{
     background-color: rgb(73, 199, 73);
 }
 
-.reveal {
-    font-family: "Play", sans-serif;
 
-    width: 20%;
-    padding: 7px 7px;
-    background-color: rgb(209, 157, 24);
-    color: white;
-
-    box-sizing: border-box;
+.button.reveal
+{
     border: 2px solid orange;
-    border-radius: 5px;
+    background-color: rgb(209, 157, 24);
 
-    text-align: center;
-    
-    display: block;
-    margin: auto;
-    margin-top: 15px;
-
-    cursor: pointer;
 }
 
-.reveal:hover {
+.button.reveal:hover 
+{
     background-color: rgb(218, 166, 34);
-
 }
 
 .feedback

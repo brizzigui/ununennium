@@ -177,30 +177,40 @@
             start();
         </script>
 
-        <div id="correct" class="feedback_hide">
-            <h3 class="feedback" style="color:rgb(0, 205, 0);">Correto!</h3>
-        </div>
+        <span id="interaction">
+            <div id="correct" class="feedback_hide">
+                <h3 class="feedback" style="color:rgb(0, 205, 0);">Correto!</h3>
+            </div>
 
-        <div id="incorrect" class="feedback_hide">
-            <h3 class="feedback" style="color: rgb(255, 31, 31);">Incorreto!</h3>
-        </div>
+            <div id="incorrect" class="feedback_hide">
+                <h3 class="feedback" style="color: rgb(255, 31, 31);">Incorreto!</h3>
+            </div>
 
-        <div id="revealed" class="feedback_hide">
-            <h3 class="feedback" style="color: rgb(255, 180, 31);">Revelada!</h3>
-        </div>
+            <div id="revealed" class="feedback_hide">
+                <h3 class="feedback" style="color: rgb(255, 180, 31);">Revelada!</h3>
+            </div>
+            
+            <input type="text" class="answer" id="current_answer" placeholder="Digite o nome do elemento aqui" style="font-family: 'Play', sans-serif;">
+
+            <button class="button verify" onclick="update();"><strong>Verificar</strong></button>
+            <button class="button reveal" onclick="reveal();"><strong>Revelar</strong></button>
+        </span>
         
-        <input type="text" class="answer" id="current_answer" placeholder="Digite o nome do elemento aqui" style="font-family: 'Play', sans-serif;">
-
-        <button class="button verify" onclick="update();"><strong>Verificar</strong></button>
-        <button class="button reveal" onclick="reveal();"><strong>Revelar</strong></button>
+        <div class = "game_over" id="won">
+            <h2 class = "game_over_text">Parabéns!</h2>
+            <h3 class = "game_over_text" style="color: whitesmoke;">Você chegou ao Ununennium (119).</h3>
+            <p class = "game_over_text" style="color: whitesmoke; margin-left: 20%; margin-right: 20%;">
+                Após explorar todos os 118 elementos, você está na fronteira do conhecimento, chegando ao (ainda) <a href="https://en.wikipedia.org/wiki/Ununennium">desconhecido</a>.
+            </p>
+            
+            <div title="Resetar" class="reset_icon" style="position: static; text-align: center; margin: auto;" onclick="reset(); close_win_menu();">
+                <img src="./assets/undo-arrow.png" style="filter: invert(100%); max-width: 100%; max-height: 100%;">
+            </div>
+            
+        </div>
 
     </div>
 
-    <div class = "game_over" id="won" style="display: none;"> <!-- deprecated feature, to be repurposed -->
-        <h3 class = "game_over_text">Você chegou ao Ununennium (119).</h3>
-        <h3 class = "game_over_text">Não tem mais para onde ir.</h3>
-        <h2 class = "game_over_text">Parabéns!</h3>
-    </div>
 
     <footer class="footer">
         <div class="footer_text">

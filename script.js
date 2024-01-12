@@ -73,6 +73,7 @@ let index = 0;
 let easy_mode = false;
 let random_mode = true;
 let revealed = false;
+let has_won = false;
 
 async function update()
 {
@@ -121,17 +122,23 @@ async function update()
         
 
         set_cookie("index", index);
+        let next_symbol = "";
 
-        if(index === 118)
+        if(explored.length === 118 && !has_won)    // if all were explored for the first time
         {
-            document.getElementById("game").style.display = "none";
-            document.getElementById("won").style.display = "block";
-            index = 0;
+            open_win_menu();
+            next_symbol = "Uue";
+            index = 118; // after, index+1 is read, so we'll get 119
         }
 
-        let next_symbol = symbols[index];
+        else
+        {
+            next_symbol = symbols[index];
+            document.getElementById("element_box").style["background-color"] = colors[index];
+        }
+
         document.getElementById("current_answer").value = "";
-        document.getElementById("element_box").style["background-color"] = colors[index];
+
 
         setTimeout(function() {
             document.getElementById("current_element").innerHTML = next_symbol;
@@ -187,6 +194,8 @@ function start()
     // restaura configurações
     easy_mode = retrive_cookie_by_name("easy_mode") === "true" ? true : false;
     random_mode = retrive_cookie_by_name("random_mode") === "true" ? true : false;
+    has_won = retrive_cookie_by_name("won") === "true" ? true : false;
+
 
     document.getElementById("easy_mode").checked = easy_mode;
     document.getElementById("random_mode").checked = random_mode;
@@ -311,6 +320,7 @@ function reset_stats()
     console.log(explored);
 
     update_stats_cookie();
+    set_cookie("won", false);
     update_stats_display();
 }
 
@@ -362,4 +372,20 @@ async function handle_feedback_animation(feedback_id)
 function write_tip()
 {
     document.getElementById("tip_text").innerHTML = tips[index];
+}
+
+function open_win_menu()
+{
+    document.getElementById("won").style.display = "block";
+    document.getElementById("interaction").style.display = "none";
+    document.getElementById("element_box").style["background-color"] = "palegreen";
+
+    has_won = true;
+    set_cookie("won", has_won);
+}
+
+function close_win_menu()
+{
+    document.getElementById("won").style.display = "none";
+    document.getElementById("interaction").style.display = "block";
 }

@@ -469,7 +469,7 @@ input:focus::placeholder {
 
 .game_over
 {
-    display: block;
+    display: none;
     margin: auto;
     margin-top: 10%;
     text-align: center;
@@ -477,7 +477,7 @@ input:focus::placeholder {
 
 .game_over_text
 {
-    font-family: 'Press Start 2P';
+    font-family: 'Play';
     color:palegreen;
 }
 

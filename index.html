@@ -1,222 +1,238 @@
 <!DOCTYPE html>
 
-<head>
-    <link rel="stylesheet" href="./style.css">
-    <script src="./script.js"></script>
-    <meta charset="utf-8">
-    <title>Ununennium</title>
-    <link rel="icon" type="image/x-icon" href="./assets/favicon.png">
+<html lang="pt-BR">
+    <head>
+        <link rel="stylesheet" href="./style.css">
+        <script src="./script.js"></script>
+        <meta charset="utf-8">
+        <title>Ununennium</title>
+        <link rel="icon" type="image/x-icon" href="./assets/favicon.png">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Play&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@700&display=swap" rel="stylesheet">
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Play&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@700&display=swap" rel="stylesheet">
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-</head>
+        <meta
+        name="description"
+        content="Jogo no formato de quiz para aprendizado da tabela periódica.
+                A partir do símbolo e número atômico, responda o nome do elemento.">
 
-<body>
-    <script>
-        document.body.addEventListener('keydown', function(event) {
-          if (event.keyCode === 13) {
-            update();
-          }
-        });
+    </head>
 
-        document.body.addEventListener('click', function(event) {
-            if(event.target.id == "background_dim")
-            {
-                hide('help_menu');
-                hide('settings_menu');
-                hide('stats_menu');
-                hide('tips_menu');
+    <body>
+        <script>
+            document.body.addEventListener('keydown', function(event) {
+            if (event.keyCode === 13) {
+                update();
             }
-        });
+            });
 
-    </script>
+            document.body.addEventListener('click', function(event) {
+                if(event.target.id == "background_dim")
+                {
+                    hide('help_menu');
+                    hide('settings_menu');
+                    hide('stats_menu');
+                    hide('tips_menu');
+                }
+            });
 
-    <div class = "main_info">
+        </script>
 
-        <h1 class = "title">
-            Ununennium
-        </h1>
+        <div class = "main_info">
 
-        <h3 class = subtitle>
-            Aprenda o nome de todos elementos
-        </h3>
+            <h1 class = "title">
+                Ununennium
+            </h1>
 
-        <hr>
-    </div>
+            <h3 class = subtitle>
+                Aprenda o nome de todos elementos
+            </h3>
 
-    <div class="icons_container">
-        <div title="Ajuda" class="help_icon" onclick="show('help_menu')">
-            <img src="./assets/help_icon.png" style="filter: invert(100%); max-width: 100%; max-height: 100%;">
+            <hr>
         </div>
 
-        <div title="Ajustes" class="settings_icon" onclick="show('settings_menu')">
-            <img src="./assets/setting.png" style="filter: invert(100%); max-width: 100%; max-height: 100%;">
+        <div class="icons_container">
+            <div title="Ajuda" class="help_icon" onclick="show('help_menu')">
+                <img src="./assets/help_icon.png" alt="Ícone de ajuda" style="filter: invert(100%); max-width: 100%; max-height: 100%;">
+            </div>
+
+            <div title="Ajustes" class="settings_icon" onclick="show('settings_menu')">
+                <img src="./assets/setting.png" alt="Ícone de ajustes" style="filter: invert(100%); max-width: 100%; max-height: 100%;">
+            </div>
+
+            <div title="Estatística" class="stats_icon" onclick="show('stats_menu')">
+                <img src="./assets/chart.png" alt="Ícone de estatística" style="filter: invert(100%); max-width: 100%; max-height: 100%;">
+            </div>
+
+            <div title="Resetar" class="reset_icon" onclick="reset()">
+                <img src="./assets/undo-arrow.png" alt="Ícone de resetar" style="filter: invert(100%); max-width: 100%; max-height: 100%;">
+            </div>
+
+            <div title="Dica" class="tip_icon" onclick="show('tips_menu')">
+                <img src="./assets/idea.png" alt="Ícone de dicas" style="filter: invert(100%); max-width: 100%; max-height: 100%;">
+            </div>
         </div>
 
-        <div title="Estatística" class="stats_icon" onclick="show('stats_menu')">
-            <img src="./assets/chart.png" style="filter: invert(100%); max-width: 100%; max-height: 100%;">
+        <div id="background_dim" class="background_dim"></div>
+
+        <div class="menus" id="help_menu">
+            <h1 style="font-family: 'Play', sans-serif; color: palegreen;">Ajuda</h1>
+            <p>Digite o nome dos elementos químicos a partir de seu símbolo e número atômico.</p>
+            
+            <div class="menu_explainer_container">
+                <img src="./assets/menu_explained.png" 
+                alt="Explicação do menu. Da esquerda para a direita, estão os seguintes ícones rotulados: ajuda, ajustes, estatística, resetar e dica." 
+                class="menu_expainer_img">
+            </div>
+            
+            <p class="under_text">Nas configurações, você pode alterar a dificuldade e a ordem dos elementos.</p>
+
+            <hr>
+
+            <h3 style="font-family: 'Play', sans-serif; color: palegreen;">Encontrou bugs ou tem sugestões?</h3>
+            <p>Entre em contato comigo em <a href="mailto:brizzigui@gmail.com">brizzigui@gmail.com</a></p>
+            <div class="x_icon" onclick="hide('help_menu')">
+                <img src="./assets/close.png" alt="Ícone de X" style="max-width: 100%; max-height: 100%;">
+            </div>
         </div>
 
-        <div title="Resetar" class="reset_icon" onclick="reset()">
-            <img src="./assets/undo-arrow.png" style="filter: invert(100%); max-width: 100%; max-height: 100%;">
+        <div class="menus" id="settings_menu">
+            <h1 style="font-family: 'Play', sans-serif; color: palegreen;">Ajustes</h3>
+
+            <h3 style="font-family: 'Play', sans-serif; color: palegreen; margin-bottom: 5px;">Modo fácil</h3>
+            <p style="font-size: smaller; color: darkgray; margin-top: 0px;">Elementos mais conhecidos</p>
+            <label class="switch">
+                <input type="checkbox" id="easy_mode" onclick="get_value()">
+                <span class="slider round"></span>
+            </label>
+
+            <h3 style="font-family: 'Play', sans-serif; color: palegreen; margin-bottom: 5px;">Modo aleatório</h3>
+            <p style="font-size: smaller; color: darkgray; margin-top: 0px;">Ordem sorteada</p>
+            <label class="switch">
+                <input type="checkbox" id="random_mode" onclick="get_value()">
+                <span class="slider round"></span>
+            </label>
+
+            <h3 style="font-family: 'Play', sans-serif; color: palegreen; margin-bottom: 5px;">Evitar repetição</h3>
+            <p style="font-size: smaller; color: darkgray; margin-top: 0px;">Elementos não explorados nessa rodada</p>
+            <label class="switch">
+                <input type="checkbox" id="avoid_repetition" onclick="get_value()">
+                <span class="slider round"></span>
+            </label>
+
+            <div class="x_icon" onclick="hide('settings_menu')">
+                <img src="./assets/close.png" alt="Ícone de X" style="max-width: 100%; max-height: 100%;">
+            </div>
         </div>
 
-        <div title="Dica" class="tip_icon" onclick="show('tips_menu')">
-            <img src="./assets/idea.png" style="filter: invert(100%); max-width: 100%; max-height: 100%;">
+        <div class="menus" id="stats_menu">
+            <h1 style="font-family: 'Play', sans-serif; color: palegreen;">Estatística</h1>
+            <hr style="margin-top: -10px; margin-bottom: -10px;">
+            <div class="reset_stats" onclick="reset_stats();" title="Zerar estatísticas">
+                <img src="./assets/undo-arrow.png" alt="Ícone de resetar" style="max-width: 100%; max-height: 100%;">
+            </div>
+            <h1 class="stat_value">
+                <span id="number_explored" class="stat_value">X</span><span class="stat_label"> / 118</span>
+            </h1>
+            <h3 class="stat_label">Elementos explorados</h3>
+
+            <h1 id="number_attempts" class="stat_value">
+                X
+            </h1>
+            <h3 class="stat_label">Rodadas jogadas</h3>
+
+            <h1 id="correctly_answered" class="stat_value">
+                X
+            </h1>
+            <h3 class="stat_label">Respostas corretas</h3>
+
+            <div class="x_icon" onclick="hide('stats_menu')">
+                <img src="./assets/close.png" alt="Ícone de X" style="max-width: 100%; max-height: 100%;">
+            </div>
         </div>
-    </div>
 
-    <div id="background_dim" class="background_dim"></div>
+        <div class="menus" id="tips_menu">
+            <h1 style="font-family: 'Play', sans-serif; color: palegreen; text-align: center;">Dica</h1>
+            
+            <h3 class="tip_text" id="tip_text">
+                Tip text sits here.
+            </h3>
 
-    <div class="menus" id="help_menu">
-        <h1 style="font-family: 'Play', sans-serif; color: palegreen;">Ajuda</h1>
-        <p>Digite o nome dos elementos químicos a partir de seu símbolo e número atômico.</p>
-        
-        <div class="menu_explainer_container">
-            <img src="./assets/menu_explained.png" class="menu_expainer_img">
-        </div>
-        
-        <p class="under_text">Nas configurações, você pode alterar a dificuldade e a ordem dos elementos.</p>
-
-        <hr>
-
-        <h3 style="font-family: 'Play', sans-serif; color: palegreen;">Encontrou bugs ou tem sugestões?</h3>
-        <p>Entre em contato comigo em <a href="mailto:brizzigui@gmail.com">brizzigui@gmail.com</a></p>
-        <div class="x_icon" onclick="hide('help_menu')">
-            <img src="./assets/close.png" style="max-width: 100%; max-height: 100%;">
-        </div>
-    </div>
-
-    <div class="menus" id="settings_menu">
-        <h1 style="font-family: 'Play', sans-serif; color: palegreen;">Ajustes</h3>
-
-        <h3 style="font-family: 'Play', sans-serif; color: palegreen; margin-bottom: 5px;">Modo fácil</h3>
-        <p style="font-size: smaller; color: darkgray; margin-top: 0px;">Elementos mais conhecidos</p>
-        <label class="switch">
-            <input type="checkbox" id="easy_mode" onclick="get_value()">
-            <span class="slider round"></span>
-          </label>
-
-        <h3 style="font-family: 'Play', sans-serif; color: palegreen; margin-bottom: 5px;">Modo aleatório</h3>
-        <p style="font-size: smaller; color: darkgray; margin-top: 0px;">Ordem sorteada</p>
-        <label class="switch">
-            <input type="checkbox" checked id="random_mode" onclick="get_value()">
-            <span class="slider round"></span>
-          </label>
-
-        <div class="x_icon" onclick="hide('settings_menu')">
-            <img src="./assets/close.png" style="max-width: 100%; max-height: 100%;">
-        </div>
-    </div>
-
-    <div class="menus" id="stats_menu">
-        <h1 style="font-family: 'Play', sans-serif; color: palegreen;">Estatística</h1>
-        <hr style="margin-top: -10px; margin-bottom: -10px;">
-        <div class="reset_stats" onclick="reset_stats();" title="Zerar estatísticas">
-            <img src="./assets/undo-arrow.png" style="max-width: 100%; max-height: 100%;">
-        </div>
-        <h1 class="stat_value">
-            <span id="number_explored" class="stat_value">X</span><span class="stat_label"> / 118</span>
-        </h1>
-        <h3 class="stat_label">Elementos explorados</h3>
-
-        <h1 id="number_attempts" class="stat_value">
-            X
-        </h1>
-        <h3 class="stat_label">Rodadas jogadas</h3>
-
-        <h1 id="correctly_answered" class="stat_value">
-            X
-        </h1>
-        <h3 class="stat_label">Respostas corretas</h3>
-
-        <div class="x_icon" onclick="hide('stats_menu')">
-            <img src="./assets/close.png" style="max-width: 100%; max-height: 100%;">
-        </div>
-    </div>
-
-    <div class="menus" id="tips_menu">
-        <h1 style="font-family: 'Play', sans-serif; color: palegreen; text-align: center;">Dica</h1>
-        
-        <h3 class="tip_text" id="tip_text">
-            Tip text sits here.
-        </h3>
-
-        <div class="x_icon" onclick="hide('tips_menu')">
-            <img src="./assets/close.png" style="max-width: 100%; max-height: 100%;">
-        </div>
-    </div>
-
-    <script>
-        $ = function(id) {
-            return document.getElementById(id);
-        }
-        var show = function(id) {
-            $(id).style.display ='block';
-            document.getElementById("background_dim").style.display = 'block';
-        }
-        var hide = function(id) {
-            $(id).style.display ='none';
-            document.getElementById("background_dim").style.display = 'none';
-        }
-    </script>
-
-
-    <div class = "game" id="game">
-        <div class="element" id="element_box">
-            <h3 class="element_letter" id="current_element">H</h3>
-            <h4 class="element_number" id="element_number">1</h4>
+            <div class="x_icon" onclick="hide('tips_menu')">
+                <img src="./assets/close.png" alt="Ícone de X" style="max-width: 100%; max-height: 100%;">
+            </div>
         </div>
 
         <script>
-            start();
+            $ = function(id) {
+                return document.getElementById(id);
+            }
+            var show = function(id) {
+                $(id).style.display ='block';
+                document.getElementById("background_dim").style.display = 'block';
+            }
+            var hide = function(id) {
+                $(id).style.display ='none';
+                document.getElementById("background_dim").style.display = 'none';
+            }
         </script>
 
-        <span id="interaction">
-            <div id="correct" class="feedback_hide">
-                <h3 class="feedback" style="color:rgb(0, 205, 0);">Correto!</h3>
+
+        <div class = "game" id="game">
+            <div class="element" id="element_box">
+                <h3 class="element_letter" id="current_element">H</h3>
+                <h4 class="element_number" id="element_number">1</h4>
             </div>
 
-            <div id="incorrect" class="feedback_hide">
-                <h3 class="feedback" style="color: rgb(255, 31, 31);">Incorreto!</h3>
+            <script>
+                start();
+            </script>
+
+            <span id="interaction">
+                <div id="correct" class="feedback_hide">
+                    <h3 class="feedback" style="color:rgb(0, 205, 0);">Correto!</h3>
+                </div>
+
+                <div id="incorrect" class="feedback_hide">
+                    <h3 class="feedback" style="color: rgb(255, 31, 31);">Incorreto!</h3>
+                </div>
+
+                <div id="revealed" class="feedback_hide">
+                    <h3 class="feedback" style="color: rgb(255, 180, 31);">Revelada!</h3>
+                </div>
+                
+                <input type="text" class="answer" id="current_answer" placeholder="Digite o nome do elemento aqui" style="font-family: 'Play', sans-serif;">
+
+                <button class="button verify" onclick="update();"><strong>Verificar</strong></button>
+                <button class="button reveal" onclick="reveal();"><strong>Revelar</strong></button>
+            </span>
+            
+            <div class = "game_over" id="won">
+                <h2 class = "game_over_text">Parabéns!</h2>
+                <h3 class = "game_over_text" style="color: whitesmoke;">Você chegou ao Ununennium (119).</h3>
+                <p class = "game_over_text" style="color: whitesmoke; margin-left: 20%; margin-right: 20%;">
+                    Após explorar todos os 118 elementos, você está na fronteira do conhecimento, chegando ao (ainda) <a href="https://en.wikipedia.org/wiki/Ununennium">desconhecido</a>.
+                </p>
+                
+                <div title="Resetar" class="reset_icon" style="position: static; text-align: center; margin: auto;" onclick="reset(); close_win_menu();">
+                    <img src="./assets/undo-arrow.png" alt="Ícone de resetar" style="filter: invert(100%); max-width: 100%; max-height: 100%;">
+                </div>
+                
             </div>
 
-            <div id="revealed" class="feedback_hide">
-                <h3 class="feedback" style="color: rgb(255, 180, 31);">Revelada!</h3>
-            </div>
-            
-            <input type="text" class="answer" id="current_answer" placeholder="Digite o nome do elemento aqui" style="font-family: 'Play', sans-serif;">
-
-            <button class="button verify" onclick="update();"><strong>Verificar</strong></button>
-            <button class="button reveal" onclick="reveal();"><strong>Revelar</strong></button>
-        </span>
-        
-        <div class = "game_over" id="won">
-            <h2 class = "game_over_text">Parabéns!</h2>
-            <h3 class = "game_over_text" style="color: whitesmoke;">Você chegou ao Ununennium (119).</h3>
-            <p class = "game_over_text" style="color: whitesmoke; margin-left: 20%; margin-right: 20%;">
-                Após explorar todos os 118 elementos, você está na fronteira do conhecimento, chegando ao (ainda) <a href="https://en.wikipedia.org/wiki/Ununennium">desconhecido</a>.
-            </p>
-            
-            <div title="Resetar" class="reset_icon" style="position: static; text-align: center; margin: auto;" onclick="reset(); close_win_menu();">
-                <img src="./assets/undo-arrow.png" style="filter: invert(100%); max-width: 100%; max-height: 100%;">
-            </div>
-            
         </div>
 
-    </div>
 
+        <footer class="footer">
+            <div class="footer_text">
+                <p>Made by <a href="https://github.com/brizzigui">Guilherme Brizzi</a> with <3</p>
+            </div>
+            
+        </footer>
 
-    <footer class="footer">
-        <div class="footer_text">
-            <p>Made by <a href="https://github.com/brizzigui">Guilherme Brizzi</a> with <3</p>
-        </div>
-        
-    </footer>
-
-</body>
+    </body>
+</html>

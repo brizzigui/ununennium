@@ -74,6 +74,7 @@ let easy_mode = false;
 let random_mode = true;
 let revealed = false;
 let has_won = false;
+let avoid_repetition = false;
 
 async function update()
 {
@@ -108,18 +109,36 @@ async function update()
             do
             {
                 index = Math.floor(Math.random() * 118); // generates random number for next element
-    
-            } while(easy_mode === true && !(index+1 < 56 || index+1 > 71 && index+1 < 87)) // re-shuffles to get easier
+                
+            } while(easy_mode === true && !is_easy_element(index)) // re-shuffles to get easier
         }
-
+        
         else
         {
             do
             {
-                index = (index + 1)%119
-            } while(easy_mode === true && !(index+1 < 56 || index+1 > 71 && index+1 < 87))
+                index = (index + 1)%119;
+
+            } while(easy_mode === true && !is_easy_element(index))
         }
-        
+
+        if (avoid_repetition) 
+        {
+            let starting_index = index;
+            let search_attempt_counter = 0;
+
+            while(explored.includes(symbols[index]) || (easy_mode === true && !is_easy_element(index)))
+            {
+                index = (index + 1)%119;
+                search_attempt_counter++;
+
+                if(search_attempt_counter == 118)
+                {
+                    index = starting_index;
+                    break;
+                }
+            } 
+        }
 
         set_cookie("index", index);
         let next_symbol = "";
@@ -195,10 +214,13 @@ function start()
     easy_mode = retrive_cookie_by_name("easy_mode") === "true" ? true : false;
     random_mode = retrive_cookie_by_name("random_mode") === "true" ? true : false;
     has_won = retrive_cookie_by_name("won") === "true" ? true : false;
+    avoid_repetition = retrive_cookie_by_name("avoid_repetition") === "true" ? true : false;
 
 
     document.getElementById("easy_mode").checked = easy_mode;
     document.getElementById("random_mode").checked = random_mode;
+    document.getElementById("avoid_repetition").checked = avoid_repetition;
+
 
     // cria estatísticas
     create_stats();
@@ -226,9 +248,11 @@ function get_value()
 {
     easy_mode = document.getElementById("easy_mode").checked;
     random_mode = document.getElementById("random_mode").checked;
+    avoid_repetition = document.getElementById("avoid_repetition").checked;
 
     set_cookie("easy_mode", easy_mode);
     set_cookie("random_mode", random_mode);
+    set_cookie("avoid_repetition", avoid_repetition);    
 }
 
 function reveal()
@@ -306,7 +330,16 @@ function update_stats_cookie()
 
 function update_stats_display()
 {
-    document.getElementById("number_explored").innerHTML = explored.length;
+    if (has_won) 
+    {
+        document.getElementById("number_explored").innerHTML = 118;
+    }
+
+    else
+    {
+        document.getElementById("number_explored").innerHTML = explored.length;
+    }
+
     document.getElementById("number_attempts").innerHTML = n_tries;
     document.getElementById("correctly_answered").innerHTML = accepted;
 
@@ -317,7 +350,6 @@ function reset_stats()
     n_tries = 0;
     accepted = 0;
     explored = [];
-    console.log(explored);
 
     update_stats_cookie();
     set_cookie("won", false);
@@ -388,4 +420,9 @@ function close_win_menu()
 {
     document.getElementById("won").style.display = "none";
     document.getElementById("interaction").style.display = "block";
+}
+
+function is_easy_element(index)
+{
+    return (index+1 < 56 || index+1 > 71 && index+1 < 87);
 }

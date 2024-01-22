@@ -414,6 +414,9 @@ function open_win_menu()
 
     has_won = true;
     set_cookie("won", has_won);
+
+    explored = [];
+    update_stats_cookie();
 }
 
 function close_win_menu()

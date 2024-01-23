@@ -121,11 +121,17 @@ async function update()
         set_cookie("index", index);
         let next_symbol = "";
         
-        if(explored.length === 118 && !has_won)    // if all were explored for the first time
+        if(explored.length === 118)    // if all were explored for the first time
         {
-            open_win_menu();
-            next_symbol = "Uue";
-            index = 118; // after, index+1 is read, so we'll get 119
+            explored = [];
+
+            if (!has_won) 
+            {    
+                update_stats_cookie();
+                open_win_menu();
+                next_symbol = "Uue";
+                index = 118; // after, index+1 is read, so we'll get 119
+            }
         }
         
         else
@@ -391,9 +397,6 @@ function open_win_menu()
     
     has_won = true;
     set_cookie("won", has_won);
-    
-    explored = [];
-    update_stats_cookie();
 }
 
 function close_win_menu()

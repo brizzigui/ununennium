@@ -76,39 +76,30 @@ let revealed = false;
 let has_won = false;
 let avoid_repetition = false;
 
+
 async function update()
 {
     n_tries++;
-
-    let expected_answer = answers[index];
-    expected_answer = expected_answer.toLowerCase();
-    expected_answer = expected_answer.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-
-    let current_answer = document.getElementById("current_answer").value;
-    current_answer = current_answer.toLowerCase().replace(/[" "]/g, "");
-    current_answer = current_answer.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-
+    
+    let expected_answer = get_expected_answer();
+    let current_answer = get_current_answer();
+    
     if(current_answer === expected_answer)
     {
         if (!revealed) 
         {
             accepted++;
-
-            let current_symbol = symbols[index];
-            if(explored.includes(current_symbol) === false)
-            {
-                explored.push(current_symbol);
-            }
+            update_explored();
         }
-
+        
         update_stats_cookie();
         update_stats_display();
-
+        
         if(random_mode === true)
         {
             do
             {
-                index = Math.floor(Math.random() * 118); // generates random number for next element
+                index = generate_random_index(); // generates random number for next element
                 
             } while(easy_mode === true && !is_easy_element(index)) // re-shuffles to get easier
         }
@@ -118,53 +109,40 @@ async function update()
             do
             {
                 index = (index + 1)%119;
-
+                
             } while(easy_mode === true && !is_easy_element(index))
         }
-
+        
         if (avoid_repetition) 
         {
-            let starting_index = index;
-            let search_attempt_counter = 0;
-
-            while(explored.includes(symbols[index]) || (easy_mode === true && !is_easy_element(index)))
-            {
-                index = (index + 1)%119;
-                search_attempt_counter++;
-
-                if(search_attempt_counter == 118)
-                {
-                    index = starting_index;
-                    break;
-                }
-            } 
+            calculate_non_repeating_index();
         }
-
+        
         set_cookie("index", index);
         let next_symbol = "";
-
+        
         if(explored.length === 118 && !has_won)    // if all were explored for the first time
         {
             open_win_menu();
             next_symbol = "Uue";
             index = 118; // after, index+1 is read, so we'll get 119
         }
-
+        
         else
         {
             next_symbol = symbols[index];
             document.getElementById("element_box").style["background-color"] = colors[index];
         }
-
+        
         document.getElementById("current_answer").value = "";
-
-
+        
+        
         setTimeout(function() {
             document.getElementById("current_element").innerHTML = next_symbol;
             document.getElementById("element_number").innerHTML = index+1;
         }
         , 100);
-
+        
         if(revealed) // if user revealed the answer
         {
             revealed = false;
@@ -176,40 +154,40 @@ async function update()
             handle_feedback_animation("correct");
         }
     }
-
+    
     else
     {
         update_stats_cookie();
         update_stats_display();
-
+        
         handle_feedback_animation("incorrect");
     }
-
+    
     write_tip();
-
+    
 }
 
 function start()
 {
     // restaura elemento
     let starting_cookie = retrive_cookie_by_name("index");
-
+    
     if(starting_cookie === "")
     {
         index = 0;
     }
-
+    
     else
     {
         index = parseInt(starting_cookie);
     }
-
-
+    
+    
     let next_symbol = symbols[index];
     document.getElementById("current_element").innerHTML = next_symbol;
     document.getElementById("element_number").innerHTML = index+1;
     document.getElementById("element_box").style["background-color"] = colors[index];
-
+    
     // restaura configurações
     easy_mode = retrive_cookie_by_name("easy_mode") === "true" ? true : false;
     random_mode = retrive_cookie_by_name("random_mode") === "true" ? true : false;
@@ -220,7 +198,6 @@ function start()
     document.getElementById("easy_mode").checked = easy_mode;
     document.getElementById("random_mode").checked = random_mode;
     document.getElementById("avoid_repetition").checked = avoid_repetition;
-
 
     // cria estatísticas
     create_stats();
@@ -240,7 +217,7 @@ function reset()
     document.getElementById("current_element").innerHTML = next_symbol;
     document.getElementById("element_number").innerHTML = 1;
     document.getElementById("element_box").style["background-color"] = colors[index];
-
+    
     document.getElementById("tip_text").innerHTML = tips[index];
 }
 
@@ -249,7 +226,7 @@ function get_value()
     easy_mode = document.getElementById("easy_mode").checked;
     random_mode = document.getElementById("random_mode").checked;
     avoid_repetition = document.getElementById("avoid_repetition").checked;
-
+    
     set_cookie("easy_mode", easy_mode);
     set_cookie("random_mode", random_mode);
     set_cookie("avoid_repetition", avoid_repetition);    
@@ -272,7 +249,7 @@ function retrive_cookie_by_name(requested_name)
 {
     let string = document.cookie;
     all_cookies = string.replace(/[" "]/g, "").split(";");
-
+    
     for(let i = 0; i < all_cookies.length; i++)
     {
         let name_value_pair = (all_cookies[i].split("="));
@@ -281,7 +258,7 @@ function retrive_cookie_by_name(requested_name)
             return name_value_pair[1];
         }
     }
-
+    
     return "";
 }
 
@@ -291,7 +268,7 @@ function check_if_stats_exist()
     {
         return false;
     }
-
+    
     return true;
 }
 
@@ -301,12 +278,12 @@ function create_stats()
     {
         let cookie = retrive_cookie_by_name("stats");
         cookie = cookie.split("/");
-
+        
         n_tries = parseInt(cookie[0]);
         accepted = parseInt(cookie[1]);
         
         cookie[2] = cookie[2].split(",");
-
+        
         for (let i = 0; i < cookie[2].length; i++) {
             let element = cookie[2][i];
             
@@ -316,7 +293,7 @@ function create_stats()
             }
         }
     }
-
+    
     else
     {
         update_stats_cookie();
@@ -334,15 +311,15 @@ function update_stats_display()
     {
         document.getElementById("number_explored").innerHTML = 118;
     }
-
+    
     else
     {
         document.getElementById("number_explored").innerHTML = explored.length;
     }
-
+    
     document.getElementById("number_attempts").innerHTML = n_tries;
     document.getElementById("correctly_answered").innerHTML = accepted;
-
+    
 }
 
 function reset_stats()
@@ -350,7 +327,7 @@ function reset_stats()
     n_tries = 0;
     accepted = 0;
     explored = [];
-
+    
     update_stats_cookie();
     set_cookie("won", false);
     update_stats_display();
@@ -364,36 +341,36 @@ async function handle_feedback_animation(feedback_id)
         document.getElementById("revealed").style.opacity = "0";
         document.getElementById("revealed").style.animation = "none";
     }
-
+    
     if (feedback_id != "correct") 
     {   
         document.getElementById("correct").style.opacity = "0";
         document.getElementById("correct").style.animation = "none";
     }
-
+    
     if (feedback_id != "incorrect") 
     {   
         document.getElementById("incorrect").style.opacity = "0";
         document.getElementById("incorrect").style.animation = "none";
     }
-
+    
     if (document.getElementById(feedback_id).style.animation == "2s ease 0s 1 normal none running feedback_animation_in") 
     {
         document.getElementById(feedback_id).style.opacity = 1;
         document.getElementById(feedback_id).style.animation = "none";
         await new Promise(r => setTimeout(r, 1));
-
+        
         document.getElementById(feedback_id).style.animation = "feedback_animation_in 2s";
         document.getElementById(feedback_id).style.opacity = 0;
     }
-
+    
     else
     {
         document.getElementById(feedback_id).style.animation = "feedback_animation_in 2s";
-
+        
         let original_index = index;
         await new Promise(r => setTimeout(r, 2000));
-
+        
         if(original_index === index && feedback_id != "incorrect")
         {
             document.getElementById(feedback_id).style.animation = "none";
@@ -411,10 +388,10 @@ function open_win_menu()
     document.getElementById("won").style.display = "block";
     document.getElementById("interaction").style.display = "none";
     document.getElementById("element_box").style["background-color"] = "palegreen";
-
+    
     has_won = true;
     set_cookie("won", has_won);
-
+    
     explored = [];
     update_stats_cookie();
 }
@@ -428,4 +405,54 @@ function close_win_menu()
 function is_easy_element(index)
 {
     return (index+1 < 56 || index+1 > 71 && index+1 < 87);
+}
+
+function get_expected_answer()
+{
+    let expected_answer = answers[index];
+    expected_answer = expected_answer.toLowerCase();
+    expected_answer = expected_answer.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+    return expected_answer;
+}
+
+function get_current_answer()
+{
+    let current_answer = document.getElementById("current_answer").value;
+    current_answer = current_answer.toLowerCase().replace(/[" "]/g, "");
+    current_answer = current_answer.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+    return current_answer;
+}
+
+function generate_random_index()
+{
+    return Math.floor(Math.random() * 118);
+}
+
+function update_explored()
+{
+    let current_symbol = symbols[index];
+    if(explored.includes(current_symbol) === false)
+    {
+        explored.push(current_symbol);
+    }
+}
+
+function calculate_non_repeating_index()
+{
+    let starting_index = index;
+    let search_attempt_counter = 0;
+    
+    while(explored.includes(symbols[index]) || (easy_mode === true && !is_easy_element(index)))
+    {
+        index = (index + 1)%119;
+        search_attempt_counter++;
+        
+        if(search_attempt_counter == 118)
+        {
+            index = starting_index;
+            break;
+        }
+    } 
 }

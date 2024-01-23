@@ -108,7 +108,7 @@ async function update()
         {
             do
             {
-                index = (index + 1)%119;
+                index = (index + 1)%118;
                 
             } while(easy_mode === true && !is_easy_element(index))
         }
@@ -446,7 +446,7 @@ function calculate_non_repeating_index()
     
     while(explored.includes(symbols[index]) || (easy_mode === true && !is_easy_element(index)))
     {
-        index = (index + 1)%119;
+        index = (index + 1)%118;
         search_attempt_counter++;
         
         if(search_attempt_counter == 118)

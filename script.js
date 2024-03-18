@@ -333,6 +333,7 @@ function reset_stats()
     n_tries = 0;
     accepted = 0;
     explored = [];
+    has_won = false;
     
     update_stats_cookie();
     set_cookie("won", false);

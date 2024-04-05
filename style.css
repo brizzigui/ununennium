@@ -87,11 +87,11 @@
         position: fixed;
         padding: 30px;
         width: 250px;
-        left: 50%;
-        margin-left: -150px;
         height: 550px;
-        top: 20%;
-        margin-top: -100px;
+
+        left: 50%;
+        transform: translateX(-50%);
+
         background: rgb(40, 40, 40);
         z-index: 2;
 
@@ -243,14 +243,18 @@
 
     .menus {
         display: none;
-        position: fixed;
+        position: fixed; 
+
         padding: 30px;
         width: 400px;
-        left: 45%;
-        margin-left: -150px;
         height: 450px;
-        top: 25%;
-        margin-top: -100px;
+
+        left: 50%;
+        transform: translateX(-50%);
+
+        margin-left: auto;
+        margin-right: auto;
+
         background: rgb(40, 40, 40);
         z-index: 20;
 
@@ -497,9 +501,8 @@ input:focus::placeholder {
 }
 
 .menus {
-    position: absolute;
     background: rgb(40, 40, 40);
-    z-index: 2;
+    z-index: 3;
 
     animation: fadeIn 0.5s;
 }
